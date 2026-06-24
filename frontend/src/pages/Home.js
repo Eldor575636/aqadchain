@@ -203,6 +203,269 @@ function TrustTicker() {
   );
 }
 
+/* ─── Live Calculator ────────────────────────────────────────────── */
+function LiveCalculator() {
+  const [tab, setTab] = useState('murabaha');
+  const [view, setView] = useState('buyer');
+  const [vehicleUse, setVehicleUse] = useState('personal');
+
+  // Murabaha/Musawama state
+  const [price, setPrice] = useState('25000');
+  const [down, setDown] = useState('5000');
+  const [markup, setMarkup] = useState('8');
+  const [months, setMonths] = useState('24');
+
+  // Ijarah state
+  const [assetVal, setAssetVal] = useState('25000');
+  const [deposit, setDeposit] = useState('3000');
+  const [residual, setResidual] = useState('5000');
+  const [ijarMonths, setIjarMonths] = useState('24');
+  const [ijarSubtype, setIjarSubtype] = useState('IMIT');
+
+  const fmt = (n) => isNaN(n) || n == null ? '—' : `$${Number(n).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+
+  // Murabaha calc
+  const p = parseFloat(price) || 0;
+  const d = parseFloat(down) || 0;
+  const m = parseFloat(markup) || 0;
+  const mo = parseInt(months) || 1;
+  const financed = p - d;
+  const markupAmt = financed * (m / 100);
+  const total = financed + markupAmt;
+  const monthly = total / mo;
+  const totalPayable = d + total;
+  const sellerZakat = markupAmt * 0.025;
+
+  // Ijarah calc
+  const av = parseFloat(assetVal) || 0;
+  const dep = parseFloat(deposit) || 0;
+  const res = ijarSubtype === 'IMIT' ? (parseFloat(residual) || 0) : 0;
+  const iMo = parseInt(ijarMonths) || 1;
+  const rentBase = av - dep - res;
+  const monthlyRental = rentBase > 0 ? rentBase / iMo : 0;
+  const totalRentals = monthlyRental * iMo;
+  const ijarTotal = dep + totalRentals + res;
+  const lessorZakat = totalRentals * 0.025;
+
+  const tabs = [
+    { key: 'murabaha', label: 'Murabaha', color: '#0D6E63' },
+    { key: 'musawama', label: 'Musawama', color: '#0D6E63' },
+    { key: 'ijarah', label: 'Ijarah', color: '#1D4ED8' },
+  ];
+
+  return (
+    <section className="py-24 px-4">
+      <div className="max-w-5xl mx-auto">
+        <FadeUp className="text-center mb-12">
+          <p className="text-teal-400 text-sm font-semibold uppercase tracking-widest mb-3">Free Calculator</p>
+          <h2 className="text-4xl md:text-5xl font-extrabold font-heading text-white">See your numbers first</h2>
+          <p className="text-white/40 mt-3 max-w-xl mx-auto">Calculate payments, total cost, and Zakat estimate — before creating a contract.</p>
+        </FadeUp>
+
+        <FadeIn>
+          <div className="rounded-2xl border border-white/8 overflow-hidden" style={{ background: 'rgba(255,255,255,0.03)', backdropFilter: 'blur(20px)' }}>
+
+            {/* Tab bar */}
+            <div className="flex border-b border-white/8">
+              {tabs.map((t) => (
+                <button key={t.key} onClick={() => setTab(t.key)}
+                  className="flex-1 py-4 text-sm font-semibold transition-all"
+                  style={{
+                    color: tab === t.key ? t.color : 'rgba(255,255,255,0.3)',
+                    borderBottom: tab === t.key ? `2px solid ${t.color}` : '2px solid transparent',
+                    background: tab === t.key ? `${t.color}10` : 'transparent',
+                  }}>
+                  {t.label}
+                  {t.key === 'ijarah' && <span className="ml-2 text-xs px-1.5 py-0.5 rounded-full" style={{ background: 'rgba(29,78,216,0.3)', color: '#60a5fa' }}>New</span>}
+                </button>
+              ))}
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-0">
+              {/* Inputs */}
+              <div className="p-6 md:p-8 border-b md:border-b-0 md:border-r border-white/8">
+                <div className="flex items-center justify-between mb-6">
+                  <h3 className="text-white font-bold">Deal Details</h3>
+                  <div className="flex gap-1 p-1 rounded-lg" style={{ background: 'rgba(255,255,255,0.05)' }}>
+                    {['buyer', 'seller'].map((v) => (
+                      <button key={v} onClick={() => setView(v)}
+                        className="px-3 py-1 text-xs font-semibold rounded-md transition-all capitalize"
+                        style={{ background: view === v ? 'rgba(13,110,99,0.4)' : 'transparent', color: view === v ? '#4ade80' : 'rgba(255,255,255,0.4)' }}>
+                        {v}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {tab !== 'ijarah' ? (
+                  <div className="space-y-4">
+                    <CalcInput label={tab === 'murabaha' ? 'Vehicle Cost ($)' : 'Agreed Price ($)'} value={price} onChange={setPrice} placeholder="25000" />
+                    <CalcInput label="Down Payment ($)" value={down} onChange={setDown} placeholder="5000" />
+                    <div>
+                      <div className="flex justify-between mb-2">
+                        <label className="text-white/50 text-sm">Markup: <span className="text-teal-400 font-bold">{markup}%</span></label>
+                        {tab === 'musawama' && <span className="text-white/30 text-xs">Cost not disclosed</span>}
+                      </div>
+                      <input type="range" min="0" max="15" step="0.5" value={markup} onChange={(e) => setMarkup(e.target.value)} className="w-full accent-teal-500" />
+                      <div className="flex justify-between text-xs text-white/20 mt-1"><span>0%</span><span>15% max</span></div>
+                    </div>
+                    <div>
+                      <label className="text-white/50 text-sm block mb-2">Term</label>
+                      <div className="grid grid-cols-4 gap-2">
+                        {[12, 24, 36, 48].map((m) => (
+                          <button key={m} onClick={() => setMonths(String(m))}
+                            className="py-2 text-sm font-semibold rounded-lg border transition-all"
+                            style={{ borderColor: months === String(m) ? '#0D6E63' : 'rgba(255,255,255,0.1)', background: months === String(m) ? 'rgba(13,110,99,0.25)' : 'transparent', color: months === String(m) ? '#4ade80' : 'rgba(255,255,255,0.4)' }}>
+                            {m}mo
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="space-y-4">
+                    <div className="flex gap-2 mb-2">
+                      {[{ k: 'IMIT', l: 'IMIT (Lease-to-Own)' }, { k: 'OPERATING', l: 'Operating Lease' }].map((s) => (
+                        <button key={s.k} onClick={() => setIjarSubtype(s.k)}
+                          className="flex-1 py-2 text-xs font-semibold rounded-lg border transition-all"
+                          style={{ borderColor: ijarSubtype === s.k ? '#1D4ED8' : 'rgba(255,255,255,0.1)', background: ijarSubtype === s.k ? 'rgba(29,78,216,0.2)' : 'transparent', color: ijarSubtype === s.k ? '#60a5fa' : 'rgba(255,255,255,0.4)' }}>
+                          {s.l}
+                        </button>
+                      ))}
+                    </div>
+                    <CalcInput label="Asset Value ($)" value={assetVal} onChange={setAssetVal} placeholder="25000" />
+                    <CalcInput label="Security Deposit ($)" value={deposit} onChange={setDeposit} placeholder="3000" />
+                    {ijarSubtype === 'IMIT' && <CalcInput label="Residual / Buyout ($)" value={residual} onChange={setResidual} placeholder="5000" />}
+                    <div>
+                      <label className="text-white/50 text-sm block mb-2">Lease Term</label>
+                      <div className="grid grid-cols-4 gap-2">
+                        {[12, 24, 36, 48].map((m) => (
+                          <button key={m} onClick={() => setIjarMonths(String(m))}
+                            className="py-2 text-sm font-semibold rounded-lg border transition-all"
+                            style={{ borderColor: ijarMonths === String(m) ? '#1D4ED8' : 'rgba(255,255,255,0.1)', background: ijarMonths === String(m) ? 'rgba(29,78,216,0.2)' : 'transparent', color: ijarMonths === String(m) ? '#60a5fa' : 'rgba(255,255,255,0.4)' }}>
+                            {m}mo
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Results */}
+              <div className="p-6 md:p-8">
+                <h3 className="text-white font-bold mb-6">
+                  {view === 'buyer' ? '📊 Buyer Breakdown' : '📈 Seller Breakdown'}
+                </h3>
+
+                {tab !== 'ijarah' ? (
+                  <div className="space-y-3">
+                    {view === 'buyer' ? <>
+                      <CalcRow label="Vehicle Price" value={fmt(p)} />
+                      <CalcRow label="Down Payment" value={fmt(d)} />
+                      <CalcRow label="Amount Financed" value={fmt(financed)} />
+                      <CalcRow label={`Markup (${markup}%)`} value={fmt(markupAmt)} />
+                      <CalcRow label="Monthly Payment" value={fmt(monthly)} highlight />
+                      <CalcRow label="Total Cost" value={fmt(totalPayable)} />
+                    </> : <>
+                      <CalcRow label="Sale Price" value={fmt(p)} />
+                      <CalcRow label="Down Payment Received" value={fmt(d)} />
+                      <CalcRow label="Profit (Markup)" value={fmt(markupAmt)} highlight />
+                      <CalcRow label="Total Received" value={fmt(totalPayable)} />
+                    </>}
+
+                    {/* Zakat section */}
+                    <div className="mt-6 pt-4 border-t border-white/8">
+                      <div className="flex items-center gap-2 mb-3">
+                        <span className="text-sm font-bold text-yellow-400">☽ Zakat Estimate</span>
+                        <span className="text-xs text-white/30">(2.5%)</span>
+                      </div>
+                      {view === 'buyer' ? (
+                        <>
+                          <div className="flex gap-2 mb-3">
+                            {[{ k: 'personal', l: 'Personal Use' }, { k: 'trade', l: 'Trade/Business' }].map((u) => (
+                              <button key={u.k} onClick={() => setVehicleUse(u.k)}
+                                className="flex-1 py-1.5 text-xs font-semibold rounded-lg border transition-all"
+                                style={{ borderColor: vehicleUse === u.k ? '#C9A84C' : 'rgba(255,255,255,0.1)', background: vehicleUse === u.k ? 'rgba(201,168,76,0.15)' : 'transparent', color: vehicleUse === u.k ? '#C9A84C' : 'rgba(255,255,255,0.3)' }}>
+                                {u.l}
+                              </button>
+                            ))}
+                          </div>
+                          {vehicleUse === 'personal'
+                            ? <p className="text-white/30 text-xs">✓ Personal-use vehicles are generally <strong className="text-white/50">exempt from Zakat</strong>.</p>
+                            : <CalcRow label="Zakat on vehicle (trade)" value={fmt(p * 0.025)} gold />}
+                        </>
+                      ) : (
+                        <CalcRow label="Zakat on profit received" value={fmt(sellerZakat)} gold />
+                      )}
+                    </div>
+                  </div>
+                ) : (
+                  <div className="space-y-3">
+                    {view === 'buyer' ? <>
+                      <CalcRow label="Asset Value" value={fmt(av)} />
+                      <CalcRow label="Security Deposit" value={fmt(dep)} />
+                      {ijarSubtype === 'IMIT' && <CalcRow label="Buyout Price" value={fmt(res)} />}
+                      <CalcRow label="Monthly Rental (Ujrah)" value={fmt(monthlyRental)} highlight blue />
+                      <CalcRow label="Total Rentals" value={fmt(totalRentals)} />
+                      <CalcRow label="Total Cost" value={fmt(ijarTotal)} />
+                    </> : <>
+                      <CalcRow label="Asset Value" value={fmt(av)} />
+                      <CalcRow label="Deposit Received" value={fmt(dep)} />
+                      <CalcRow label="Total Rental Income" value={fmt(totalRentals)} highlight blue />
+                      {ijarSubtype === 'IMIT' && <CalcRow label="Buyout at End" value={fmt(res)} />}
+                      <CalcRow label="Total Received" value={fmt(ijarTotal)} />
+                    </>}
+
+                    <div className="mt-6 pt-4 border-t border-white/8">
+                      <div className="flex items-center gap-2 mb-3">
+                        <span className="text-sm font-bold text-yellow-400">☽ Zakat Estimate</span>
+                        <span className="text-xs text-white/30">(2.5%)</span>
+                      </div>
+                      {view === 'buyer'
+                        ? <p className="text-white/30 text-xs">✓ Leased vehicles used personally are generally <strong className="text-white/50">exempt from Zakat</strong> for the lessee.</p>
+                        : <CalcRow label="Lessor Zakat on rental income" value={fmt(lessorZakat)} gold />}
+                    </div>
+                  </div>
+                )}
+
+                <div className="mt-6">
+                  <p className="text-white/20 text-xs mb-4">*Estimates only. Zakat calculations may vary — consult a qualified scholar.</p>
+                  <a href="/login" className="block w-full py-3 text-center text-sm font-bold rounded-xl transition-all"
+                    style={{ background: 'rgba(13,110,99,0.3)', color: '#4ade80', border: '1px solid rgba(13,110,99,0.4)' }}>
+                    Create a real contract →
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </FadeIn>
+      </div>
+    </section>
+  );
+}
+
+function CalcInput({ label, value, onChange, placeholder }) {
+  return (
+    <div>
+      <label className="text-white/50 text-sm block mb-1.5">{label}</label>
+      <input type="number" value={value} onChange={(e) => onChange(e.target.value)} placeholder={placeholder}
+        className="w-full px-4 py-2.5 rounded-lg text-sm font-medium text-white outline-none transition-all"
+        style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }} />
+    </div>
+  );
+}
+
+function CalcRow({ label, value, highlight, blue, gold }) {
+  return (
+    <div className={`flex justify-between py-2.5 rounded-lg px-3 -mx-3 ${highlight || gold ? '' : ''}`}
+      style={highlight ? { background: blue ? 'rgba(29,78,216,0.15)' : 'rgba(13,110,99,0.15)' } : gold ? { background: 'rgba(201,168,76,0.1)' } : {}}>
+      <span className="text-sm" style={{ color: gold ? '#C9A84C' : 'rgba(255,255,255,0.4)' }}>{label}</span>
+      <span className="text-sm font-bold" style={{ color: gold ? '#C9A84C' : highlight ? (blue ? '#60a5fa' : '#4ade80') : 'rgba(255,255,255,0.9)' }}>{value}</span>
+    </div>
+  );
+}
+
 /* ─── Step card ──────────────────────────────────────────────────── */
 function StepCard({ number, title, description, delay }) {
   const ref = useRef(null);
@@ -546,6 +809,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* ── LIVE CALCULATOR ─────────────────────────────────────── */}
+      <LiveCalculator />
 
       {/* ── LATE FEE MECHANIC ────────────────────────────────────── */}
       <section className="py-24 px-4 relative">
