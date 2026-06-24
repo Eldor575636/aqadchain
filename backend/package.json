@@ -4,7 +4,7 @@
   "description": "AqadChain Halal Contract Platform - Backend API",
   "main": "src/server.js",
   "scripts": {
-    "start": "node src/server.js",
+    "start": "prisma generate --schema src/prisma/schema.prisma && node src/server.js",
     "dev": "nodemon src/server.js",
     "db:migrate": "prisma migrate dev",
     "db:generate": "prisma generate",
