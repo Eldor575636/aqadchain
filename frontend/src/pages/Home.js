@@ -179,7 +179,7 @@ const trustItems = [
   '✦ Legally Binding',
   '✦ DocuSign E-Signatures',
   '✦ California Law',
-  '✦ Murabaha & Musawama',
+  '✦ Murabaha, Musawama & Ijarah',
   '✦ No Riba',
   '✦ AAOIFI Standards',
   '✦ Encrypted & Secure',
@@ -235,7 +235,7 @@ function StepCard({ number, title, description, delay }) {
 }
 
 /* ─── Contract type card ─────────────────────────────────────────── */
-function ContractCard({ title, subtitle, description, points, isHighlight, delay }) {
+function ContractCard({ title, subtitle, description, points, isHighlight, delay, badge }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-60px' });
 
@@ -263,7 +263,10 @@ function ContractCard({ title, subtitle, description, points, isHighlight, delay
           م
         </div>
         <div>
-          <h3 className="text-white font-bold font-heading">{title}</h3>
+          <div className="flex items-center gap-2">
+            <h3 className="text-white font-bold font-heading">{title}</h3>
+            {badge && <span className="text-xs font-bold px-2 py-0.5 rounded-full" style={{ background: 'rgba(29,78,216,0.25)', color: '#60a5fa', border: '1px solid rgba(29,78,216,0.4)' }}>{badge}</span>}
+          </div>
           <p className="text-xs font-medium mt-0.5" style={{ color: isHighlight ? '#4ade80' : '#C9A84C' }}>{subtitle}</p>
         </div>
       </div>
@@ -450,7 +453,7 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.25 }}
             className="text-lg md:text-xl text-white/50 max-w-2xl mx-auto mb-10 leading-relaxed"
           >
-            Generate Murabaha and Musawama agreements with e-signatures built in.
+            Generate Murabaha, Musawama, and Ijarah agreements with e-signatures built in.
             No lawyer required. No Riba. Done in minutes.
           </motion.p>
 
@@ -519,10 +522,11 @@ export default function Home() {
           <FadeUp className="text-center mb-16">
             <p className="text-gold-400 text-sm font-semibold uppercase tracking-widest mb-3" style={{ color: '#C9A84C' }}>Contract types</p>
             <h2 className="text-4xl md:text-5xl font-extrabold font-heading text-white">
-              Two structures.<br />Both Shariah-compliant.
+              Three structures.<br />All Shariah-compliant.
             </h2>
+            <p className="text-white/40 mt-4 max-w-xl mx-auto">Choose the structure that fits your deal — sale or lease, cost-disclosed or negotiated.</p>
           </FadeUp>
-          <div className="grid md:grid-cols-2 gap-5">
+          <div className="grid md:grid-cols-3 gap-5">
             <ContractCard
               title="Murabaha" subtitle="Cost-Plus Financing" isHighlight delay={0.1}
               description="The seller discloses their purchase cost and agrees on a fixed profit margin. The most transparent and widely used Islamic finance structure."
@@ -532,6 +536,12 @@ export default function Home() {
               title="Musawama" subtitle="Negotiated Price Sale" isHighlight={false} delay={0.2}
               description="Both parties negotiate a final price — no cost disclosure required. Equally Shariah-compliant. More privacy for the seller."
               points={['No cost disclosure needed', 'Negotiated selling price', 'Same payment structure', 'Flexible for both parties']}
+            />
+            <ContractCard
+              title="Ijarah" subtitle="Islamic Lease" isHighlight={false} delay={0.3}
+              badge="New"
+              description="The lessor owns the vehicle and leases it to the lessee. Rental payments cover usufruct only. Optionally ends with ownership transfer (IMIT)."
+              points={['Lessor retains ownership', 'Periodic rental (Ujrah)', 'Optional buy-out (IMIT)', 'AAOIFI Standard No. 9']}
             />
           </div>
         </div>
