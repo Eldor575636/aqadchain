@@ -812,9 +812,19 @@ export default function Home() {
           style={{ background: 'linear-gradient(to top, #080C0F, transparent)' }} />
       </section>
 
-      {/* ── EXAMPLE DEALS TICKER ─────────────────────────────────── */}
+      {/* ── MARKETPLACE TEASER ───────────────────────────────────── */}
       <section className="border-b border-white/5" style={{ background: 'rgba(255,255,255,0.015)' }}>
-        <p className="text-center text-white/25 text-xs font-semibold uppercase tracking-widest pt-6">Recently signed on AqadChain</p>
+        <Link to="/marketplace" className="block group">
+          <div className="flex flex-col items-center pt-6 pb-1">
+            <span className="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-2"
+              style={{ background: 'rgba(201,168,76,0.18)', color: '#C9A84C', border: '1px solid rgba(201,168,76,0.3)' }}>
+              🔥 New · Marketplace is live
+            </span>
+            <p className="text-center text-white/60 text-sm font-semibold group-hover:text-white transition-colors">
+              Browse halal-financed vehicles for sale →
+            </p>
+          </div>
+        </Link>
         <DealTicker />
       </section>
 

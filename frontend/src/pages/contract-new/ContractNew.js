@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import { AuthNavbar } from '../../components/Navbar';
 import StepIndicator from '../../components/StepIndicator';
 import StepType from './StepType';
@@ -28,7 +28,9 @@ const initialFormData = {
 };
 
 export default function ContractNew() {
-  const [formData, setFormData] = useState(initialFormData);
+  const location = useLocation();
+  const prefill = location.state?.prefill;
+  const [formData, setFormData] = useState(prefill ? { ...initialFormData, ...prefill } : initialFormData);
   const [currentStep, setCurrentStep] = useState(1);
   const navigate = useNavigate();
 

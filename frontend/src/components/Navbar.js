@@ -30,6 +30,7 @@ export function PublicNavbar({ dark = false }) {
         <Logo />
 
         <nav className={`hidden md:flex items-center space-x-8 text-sm font-medium ${dark ? 'text-white/50' : 'text-gray-600'}`}>
+          <NavLink to="/marketplace" className={({ isActive }) => isActive ? activeColor : textColor}>Marketplace</NavLink>
           <NavLink to="/how-it-works" className={({ isActive }) => isActive ? activeColor : textColor}>How It Works</NavLink>
           <NavLink to="/pricing" className={({ isActive }) => isActive ? activeColor : textColor}>Pricing</NavLink>
           <NavLink to="/about" className={({ isActive }) => isActive ? activeColor : textColor}>About</NavLink>
@@ -54,6 +55,7 @@ export function PublicNavbar({ dark = false }) {
 
       {menuOpen && (
         <div className="md:hidden border-t border-gray-100 bg-white px-4 py-4 space-y-3">
+          <NavLink to="/marketplace" className="block text-sm font-medium text-gray-700 py-2" onClick={() => setMenuOpen(false)}>Marketplace</NavLink>
           <NavLink to="/how-it-works" className="block text-sm font-medium text-gray-700 py-2" onClick={() => setMenuOpen(false)}>How It Works</NavLink>
           <NavLink to="/pricing" className="block text-sm font-medium text-gray-700 py-2" onClick={() => setMenuOpen(false)}>Pricing</NavLink>
           <NavLink to="/about" className="block text-sm font-medium text-gray-700 py-2" onClick={() => setMenuOpen(false)}>About</NavLink>
@@ -83,6 +85,8 @@ export function AuthNavbar() {
           <nav className="hidden md:flex items-center space-x-6 text-sm font-medium text-gray-600">
             <NavLink to="/dashboard" className={({ isActive }) => isActive ? 'text-teal-600' : 'hover:text-gray-900'}>Dashboard</NavLink>
             <NavLink to="/contracts" className={({ isActive }) => isActive ? 'text-teal-600' : 'hover:text-gray-900'}>Contracts</NavLink>
+            <NavLink to="/marketplace" className={({ isActive }) => isActive ? 'text-teal-600' : 'hover:text-gray-900'}>Marketplace</NavLink>
+            <NavLink to="/marketplace/mine" className={({ isActive }) => isActive ? 'text-teal-600' : 'hover:text-gray-900'}>My Listings</NavLink>
             {dbUser?.role === 'ADMIN' && (
               <NavLink to="/admin" className={({ isActive }) => isActive ? 'text-teal-600' : 'hover:text-gray-900'}>Admin</NavLink>
             )}

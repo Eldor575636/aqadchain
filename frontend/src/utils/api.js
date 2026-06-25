@@ -65,6 +65,17 @@ export const calculatorAPI = {
   calculate: (data) => api.post('/calculator', data),
 };
 
+// Marketplace listings
+export const listingsAPI = {
+  browse: (params) => api.get('/listings', { params }),
+  get: (id) => api.get(`/listings/${id}`),
+  mine: () => api.get('/listings/mine'),
+  create: (data) => api.post('/listings', data),
+  update: (id, data) => api.put(`/listings/${id}`, data),
+  setStatus: (id, status) => api.put(`/listings/${id}/status`, { status }),
+  delete: (id) => api.delete(`/listings/${id}`),
+};
+
 // Admin
 export const adminAPI = {
   getUsers: (params) => api.get('/admin/users', { params }),

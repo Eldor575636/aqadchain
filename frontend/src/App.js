@@ -8,6 +8,8 @@ import Pricing from './pages/Pricing';
 import HowItWorks from './pages/HowItWorks';
 import About from './pages/About';
 import FAQ from './pages/FAQ';
+import Marketplace from './pages/Marketplace';
+import ListingDetail from './pages/ListingDetail';
 
 // Auth
 import AuthCallback from './pages/AuthCallback';
@@ -22,6 +24,8 @@ import ContractsList from './pages/ContractsList';
 import ContractDetail from './pages/ContractDetail';
 import ContractNew from './pages/contract-new/ContractNew';
 import Settings from './pages/Settings';
+import SellListing from './pages/SellListing';
+import MyListings from './pages/MyListings';
 import AdminDashboard from './pages/AdminDashboard';
 
 // Error pages
@@ -53,6 +57,10 @@ export default function App() {
         <Route path="/how-it-works" element={<HowItWorks />} />
         <Route path="/about" element={<About />} />
         <Route path="/faq" element={<FAQ />} />
+        <Route path="/marketplace" element={<Marketplace />} />
+        <Route path="/marketplace/sell" element={<PrivateRoute><SellListing /></PrivateRoute>} />
+        <Route path="/marketplace/mine" element={<PrivateRoute><MyListings /></PrivateRoute>} />
+        <Route path="/marketplace/:id" element={<ListingDetail />} />
         <Route path="/login" element={<Login />} />
         <Route path="/auth/callback" element={<AuthCallback />} />
         <Route path="/unauthorized" element={<Unauthorized />} />

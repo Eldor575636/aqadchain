@@ -50,6 +50,13 @@ enum SignerRole {
   BUYER
 }
 
+enum ListingStatus {
+  ACTIVE
+  PENDING
+  SOLD
+  REMOVED
+}
+
 model User {
   id                   String      @id @default(uuid())
   email                String      @unique
@@ -65,6 +72,7 @@ model User {
 
   contracts  Contract[]
   audit_logs AuditLog[]
+  listings   Listing[]
 }
 
 model Contract {
@@ -123,6 +131,34 @@ model Contract {
 
   creator    User        @relation(fields: [creator_id], references: [id])
   signatures Signature[]
+}
+
+model Listing {
+  id                    String         @id @default(uuid())
+  seller_id             String
+  status                ListingStatus  @default(ACTIVE)
+
+  vehicle_vin           String?
+  vehicle_year          Int
+  vehicle_make          String
+  vehicle_model         String
+  vehicle_trim          String?
+  vehicle_mileage       Int?
+  vehicle_color         String?
+  title_status          TitleStatus?
+
+  asking_price          Decimal        @db.Decimal(12, 2)
+  contract_type_offered ContractType
+  description           String?
+  city                  String?
+  state                 String?
+  photo_url             String?
+
+  views                 Int            @default(0)
+  created_at            DateTime       @default(now())
+  updated_at            DateTime       @updatedAt
+
+  seller User @relation(fields: [seller_id], references: [id])
 }
 
 model Signature {
