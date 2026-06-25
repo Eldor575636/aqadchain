@@ -173,6 +173,71 @@ function FloatingContractCard() {
   );
 }
 
+/* ─── Mini deal card ─────────────────────────────────────────────── */
+function MiniDealCard({ id, vehicle, type, amount, monthly, term, color }) {
+  return (
+    <div className="flex-shrink-0 w-64 rounded-xl border border-white/8 overflow-hidden"
+      style={{ background: 'rgba(255,255,255,0.025)', backdropFilter: 'blur(12px)' }}>
+      <div className="px-4 py-2.5 border-b border-white/5 flex items-center justify-between">
+        <div className="flex items-center gap-1.5">
+          <div className="w-1.5 h-1.5 rounded-full" style={{ background: color }} />
+          <span className="text-white/50 text-[11px] font-mono">{id}</span>
+        </div>
+        <span className="text-[10px] px-2 py-0.5 rounded-full font-semibold"
+          style={{ background: color + '22', color }}>
+          ✓ Signed
+        </span>
+      </div>
+      <div className="px-4 py-3">
+        <p className="text-white text-sm font-semibold truncate">{vehicle}</p>
+        <p className="text-xs mb-2" style={{ color }}>{type}</p>
+        <div className="flex justify-between text-xs">
+          <div>
+            <p className="text-white/30">Financed</p>
+            <p className="text-white font-semibold">{amount}</p>
+          </div>
+          <div>
+            <p className="text-white/30">Monthly</p>
+            <p className="text-white font-semibold">{monthly}</p>
+          </div>
+          <div>
+            <p className="text-white/30">Term</p>
+            <p className="text-white font-semibold">{term}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+const exampleDeals = [
+  { id: 'AQD-000142', vehicle: '2022 Toyota Camry XLE', type: 'Murabaha', amount: '$18,500', monthly: '$412', term: '48 mo', color: '#4ade80' },
+  { id: 'AQD-000158', vehicle: '2023 Honda CR-V EX-L', type: 'Musawama', amount: '$27,900', monthly: '$598', term: '52 mo', color: '#4ade80' },
+  { id: 'AQD-000171', vehicle: '2021 Ford F-150 XLT', type: 'Ijarah Lease', amount: '$34,200', monthly: '$715', term: '36 mo', color: '#60a5fa' },
+  { id: 'AQD-000186', vehicle: '2023 Tesla Model Y', type: 'Murabaha', amount: '$42,800', monthly: '$890', term: '54 mo', color: '#4ade80' },
+  { id: 'AQD-000203', vehicle: '2020 BMW X5 xDrive40i', type: 'Musawama', amount: '$38,650', monthly: '$805', term: '48 mo', color: '#4ade80' },
+  { id: 'AQD-000219', vehicle: '2022 Chevrolet Tahoe', type: 'Ijarah Lease', amount: '$45,100', monthly: '$940', term: '42 mo', color: '#60a5fa' },
+  { id: 'AQD-000234', vehicle: '2023 Lexus RX 350', type: 'Murabaha', amount: '$31,400', monthly: '$652', term: '48 mo', color: '#4ade80' },
+  { id: 'AQD-000251', vehicle: '2021 Jeep Wrangler Rubicon', type: 'Musawama', amount: '$29,750', monthly: '$615', term: '46 mo', color: '#4ade80' },
+];
+
+function DealTicker() {
+  const doubled = [...exampleDeals, ...exampleDeals];
+  return (
+    <div className="overflow-hidden py-10">
+      <motion.div
+        animate={{ x: ['0%', '-50%'] }}
+        transition={{ duration: 50, repeat: Infinity, ease: 'linear' }}
+        className="flex gap-4 w-max"
+      >
+        {doubled.map((deal, i) => (
+          <MiniDealCard key={i} {...deal} />
+        ))}
+      </motion.div>
+    </div>
+  );
+}
+
 /* ─── Rotating slogan ────────────────────────────────────────────── */
 const slogans = [
   { line: 'Halal contracts. No compromise.', sub: 'Shariah-compliant from start to finish.' },
@@ -815,6 +880,12 @@ export default function Home() {
         {/* Bottom fade */}
         <div className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none"
           style={{ background: 'linear-gradient(to top, #080C0F, transparent)' }} />
+      </section>
+
+      {/* ── EXAMPLE DEALS TICKER ─────────────────────────────────── */}
+      <section className="border-b border-white/5" style={{ background: 'rgba(255,255,255,0.015)' }}>
+        <p className="text-center text-white/25 text-xs font-semibold uppercase tracking-widest pt-6">Recently signed on AqadChain</p>
+        <DealTicker />
       </section>
 
       {/* ── TRUST TICKER ────────────────────────────────────────── */}
