@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import { contractsAPI } from '../utils/api';
+import { contractsAPI, vehiclesAPI } from '../utils/api';
 import { AuthNavbar } from '../components/Navbar';
 import { ContractStatusBadge } from '../components/Badge';
 import Button from '../components/Button';
@@ -38,6 +38,8 @@ export default function ContractDetail() {
   const [certifiedCopyModal, setCertifiedCopyModal] = useState(false);
   const [tab, setTab] = useState('details'); // 'details' | 'contract'
   const [contractHtml, setContractHtml] = useState(null);
+  const [fuelEconomy, setFuelEconomy] = useState(null);
+  const [vehiclePhoto, setVehiclePhoto] = useState(null);
 
   const load = () => {
     setLoading(true);
@@ -48,6 +50,21 @@ export default function ContractDetail() {
   };
 
   useEffect(() => { load(); }, [id]);
+
+  // Done-deal extras: fuel economy + stock photo, only for signed/completed contracts
+  useEffect(() => {
+    if (!contract) return;
+    if (contract.status !== 'SIGNED' && contract.status !== 'COMPLETED') return;
+    if (!contract.vehicle_year || !contract.vehicle_make || !contract.vehicle_model) return;
+
+    vehiclesAPI.fuelEconomy(contract.vehicle_year, contract.vehicle_make, contract.vehicle_model)
+      .then(({ data }) => { if (data.found) setFuelEconomy(data); })
+      .catch(() => {});
+
+    vehiclesAPI.photo(contract.vehicle_year, contract.vehicle_make, contract.vehicle_model)
+      .then(({ data }) => { if (data.found) setVehiclePhoto(data); })
+      .catch(() => {});
+  }, [contract]);
 
   const handleSend = async () => {
     setActionLoading(true);
@@ -169,12 +186,31 @@ export default function ContractDetail() {
 
             {/* Vehicle */}
             <Card header="Vehicle">
+              {vehiclePhoto && (
+                <div className="mb-4 -mt-2 rounded-card overflow-hidden">
+                  <img src={vehiclePhoto.url} alt={`${c.vehicle_year} ${c.vehicle_make} ${c.vehicle_model}`} className="w-full h-48 object-cover" />
+                  {vehiclePhoto.credit_name && (
+                    <p className="text-[10px] text-gray-400 mt-1">
+                      Photo by{' '}
+                      <a href={vehiclePhoto.credit_url} target="_blank" rel="noreferrer" className="underline">{vehiclePhoto.credit_name}</a>
+                      {' '}on Unsplash
+                    </p>
+                  )}
+                </div>
+              )}
               <DetailRow label="VIN" value={c.vehicle_vin} />
               <DetailRow label="Year / Make / Model" value={`${c.vehicle_year || ''} ${c.vehicle_make || ''} ${c.vehicle_model || ''}`.trim() || '—'} />
               <DetailRow label="Trim" value={c.vehicle_trim} />
               <DetailRow label="Mileage" value={c.vehicle_mileage != null ? `${Number(c.vehicle_mileage).toLocaleString()} miles` : null} />
               <DetailRow label="Color" value={c.vehicle_color} />
               <DetailRow label="Title Status" value={c.title_status} />
+              {fuelEconomy && (
+                <>
+                  <DetailRow label="Fuel Economy" value={`${fuelEconomy.combined_mpg} MPG combined (${fuelEconomy.city_mpg} city / ${fuelEconomy.highway_mpg} hwy)`} />
+                  <DetailRow label="Fuel Type" value={fuelEconomy.fuel_type} />
+                  <DetailRow label="Annual Fuel Cost (est.)" value={fuelEconomy.annual_fuel_cost ? `$${fuelEconomy.annual_fuel_cost}` : null} />
+                </>
+              )}
             </Card>
 
             {/* Parties */}

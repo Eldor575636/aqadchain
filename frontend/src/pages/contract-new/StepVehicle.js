@@ -9,6 +9,7 @@ export default function StepVehicle({ formData, updateForm, goToStep }) {
   const [vinLoading, setVinLoading] = useState(false);
   const [recalls, setRecalls] = useState([]);
   const [vinError, setVinError] = useState('');
+  const [marketValue, setMarketValue] = useState(null);
 
   const lookupVin = async () => {
     const vin = formData.vehicle_vin?.trim();
@@ -18,6 +19,7 @@ export default function StepVehicle({ formData, updateForm, goToStep }) {
     }
     setVinError('');
     setVinLoading(true);
+    setMarketValue(null);
     try {
       const { data } = await vehiclesAPI.lookup(vin);
       updateForm({
@@ -27,6 +29,7 @@ export default function StepVehicle({ formData, updateForm, goToStep }) {
         vehicle_trim: data.trim || '',
       });
       setRecalls(data.recalls || []);
+      if (data.market_value) setMarketValue(data.market_value);
     } catch (err) {
       setVinError(err.message || 'VIN lookup failed. Enter details manually.');
     } finally {
@@ -60,6 +63,16 @@ export default function StepVehicle({ formData, updateForm, goToStep }) {
         <Alert variant="warning" title={`⚠ ${recalls.length} active recall(s) found`} className="mb-6">
           {recalls.slice(0, 2).map((r, i) => <div key={i} className="mt-1 text-xs">{r.component}: {r.summary?.slice(0, 100)}…</div>)}
           {recalls.length > 2 && <div className="text-xs mt-1">+ {recalls.length - 2} more recalls</div>}
+        </Alert>
+      )}
+
+      {marketValue && (
+        <Alert variant="info" title="Estimated market value" className="mb-6">
+          <span className="text-sm font-semibold">
+            {typeof marketValue === 'object'
+              ? `${marketValue.low ? `$${Number(marketValue.low).toLocaleString()} – ` : ''}$${Number(marketValue.high || marketValue.average || marketValue).toLocaleString()}`
+              : `$${Number(marketValue).toLocaleString()}`}
+          </span>
         </Alert>
       )}
 

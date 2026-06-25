@@ -56,6 +56,8 @@ export const contractsAPI = {
 // Vehicles
 export const vehiclesAPI = {
   lookup: (vin) => api.get('/vehicles/lookup', { params: { vin } }),
+  fuelEconomy: (year, make, model) => api.get('/vehicles/fuel-economy', { params: { year, make, model } }),
+  photo: (year, make, model) => api.get('/vehicles/photo', { params: { year, make, model } }),
 };
 
 // Calculator
