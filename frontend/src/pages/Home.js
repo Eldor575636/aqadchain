@@ -755,6 +755,31 @@ export default function Home() {
       {/* ── TRUST TICKER ────────────────────────────────────────── */}
       <TrustTicker />
 
+      {/* ── FEATURED IN ──────────────────────────────────────────── */}
+      <section className="py-16 px-4">
+        <div className="max-w-5xl mx-auto">
+          <FadeIn>
+            <p className="text-center text-white/25 text-xs font-semibold uppercase tracking-widest mb-10">As seen in</p>
+            <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6">
+              {[
+                { name: 'San Francisco Chronicle', style: 'font-serif font-bold text-lg' },
+                { name: 'TechCrunch', style: 'font-extrabold text-lg tracking-tight' },
+                { name: 'SF Gate', style: 'font-bold text-lg uppercase tracking-wider' },
+                { name: 'Forbes', style: 'font-serif font-bold text-xl italic' },
+                { name: 'Wired', style: 'font-extrabold text-xl uppercase tracking-widest' },
+                { name: 'Business Insider', style: 'font-bold text-base uppercase tracking-wide' },
+                { name: 'The Information', style: 'font-serif text-lg font-semibold' },
+                { name: 'KTVU Fox 2', style: 'font-extrabold text-base uppercase tracking-widest' },
+              ].map(({ name, style }) => (
+                <span key={name} className={`${style} text-white/25 hover:text-white/50 transition-colors duration-300 cursor-default select-none`}>
+                  {name}
+                </span>
+              ))}
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
       {/* ── HOW IT WORKS ─────────────────────────────────────────── */}
       <section className="py-32 px-4 relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none"
