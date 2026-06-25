@@ -13,7 +13,7 @@ export function UserProvider({ children }) {
   useEffect(() => {
     setTokenGetter(() =>
       getAccessTokenSilently({
-        authorizationParams: { audience: process.env.REACT_APP_AUTH0_AUDIENCE },
+        authorizationParams: { audience: 'https://api.aqadchain.com' },
       })
     );
   }, [getAccessTokenSilently]);
