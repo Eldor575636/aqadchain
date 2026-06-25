@@ -26,6 +26,8 @@ import ContractNew from './pages/contract-new/ContractNew';
 import Settings from './pages/Settings';
 import SellListing from './pages/SellListing';
 import MyListings from './pages/MyListings';
+import Favorites from './pages/Favorites';
+import Messages from './pages/Messages';
 import AdminDashboard from './pages/AdminDashboard';
 
 // Error pages
@@ -60,7 +62,9 @@ export default function App() {
         <Route path="/marketplace" element={<Marketplace />} />
         <Route path="/marketplace/sell" element={<PrivateRoute><SellListing /></PrivateRoute>} />
         <Route path="/marketplace/mine" element={<PrivateRoute><MyListings /></PrivateRoute>} />
+        <Route path="/marketplace/favorites" element={<PrivateRoute><Favorites /></PrivateRoute>} />
         <Route path="/marketplace/:id" element={<ListingDetail />} />
+        <Route path="/messages" element={<PrivateRoute><Messages /></PrivateRoute>} />
         <Route path="/login" element={<Login />} />
         <Route path="/auth/callback" element={<AuthCallback />} />
         <Route path="/unauthorized" element={<Unauthorized />} />

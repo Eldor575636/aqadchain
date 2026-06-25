@@ -19,10 +19,17 @@ function money(v) {
   return `$${Number(v).toLocaleString()}`;
 }
 
-function ListingCard({ listing }) {
+function ListingCard({ listing, isFavorited, onToggleFavorite }) {
   return (
-    <Link to={`/marketplace/${listing.id}`} className="block">
-      <Card padding={false} className="overflow-hidden hover:shadow-lg transition-shadow h-full">
+    <Card padding={false} className="overflow-hidden hover:shadow-lg transition-shadow h-full relative">
+      <button
+        onClick={(e) => { e.preventDefault(); e.stopPropagation(); onToggleFavorite(listing.id); }}
+        className="absolute top-2 right-2 z-10 w-8 h-8 rounded-full bg-white/90 shadow flex items-center justify-center text-lg"
+        aria-label="Toggle favorite"
+      >
+        {isFavorited ? '❤️' : '🤍'}
+      </button>
+      <Link to={`/marketplace/${listing.id}`} className="block">
         <div className="h-44 bg-gray-100 overflow-hidden">
           {listing.photo_url ? (
             <img src={listing.photo_url} alt={`${listing.vehicle_year} ${listing.vehicle_make} ${listing.vehicle_model}`} className="w-full h-full object-cover" />
@@ -42,9 +49,12 @@ function ListingCard({ listing }) {
           </p>
           <p className="text-xs text-gray-500 mb-2">{listing.vehicle_trim} {listing.vehicle_mileage ? `· ${Number(listing.vehicle_mileage).toLocaleString()} mi` : ''}</p>
           <p className="text-teal-600 font-bold text-lg">{money(listing.asking_price)}</p>
+          {listing.has_recalls && (
+            <p className="text-amber-600 text-xs font-semibold mt-1">⚠ Active recall(s)</p>
+          )}
         </div>
-      </Card>
-    </Link>
+      </Link>
+    </Card>
   );
 }
 
@@ -61,6 +71,9 @@ export default function Marketplace() {
   const [contractType, setContractType] = useState('');
   const [minPrice, setMinPrice] = useState('');
   const [maxPrice, setMaxPrice] = useState('');
+  const [nearZip, setNearZip] = useState('');
+  const [radiusMiles, setRadiusMiles] = useState('50');
+  const [favoriteIds, setFavoriteIds] = useState(new Set());
 
   const load = useCallback(() => {
     setLoading(true);
@@ -71,17 +84,38 @@ export default function Marketplace() {
       contract_type: contractType || undefined,
       min_price: minPrice || undefined,
       max_price: maxPrice || undefined,
+      near_zip: nearZip || undefined,
+      radius_miles: nearZip ? radiusMiles : undefined,
     })
       .then(({ data }) => { setListings(data.listings); setTotal(data.total); setPages(data.pages); })
       .catch(() => {})
       .finally(() => setLoading(false));
-  }, [page, search, make, contractType, minPrice, maxPrice]);
+  }, [page, search, make, contractType, minPrice, maxPrice, nearZip, radiusMiles]);
 
   useEffect(() => { load(); }, [load]);
+
+  useEffect(() => {
+    if (!isAuthenticated) { setFavoriteIds(new Set()); return; }
+    listingsAPI.myFavorites()
+      .then(({ data }) => setFavoriteIds(new Set(data.favorites.map((f) => f.listing_id))))
+      .catch(() => {});
+  }, [isAuthenticated]);
 
   const handleSell = () => {
     if (!isAuthenticated) { loginWithRedirect(); return; }
     navigate('/marketplace/sell');
+  };
+
+  const toggleFavorite = async (id) => {
+    if (!isAuthenticated) { loginWithRedirect(); return; }
+    try {
+      const { data } = await listingsAPI.toggleFavorite(id);
+      setFavoriteIds((prev) => {
+        const next = new Set(prev);
+        if (data.favorited) next.add(id); else next.delete(id);
+        return next;
+      });
+    } catch {}
   };
 
   return (
@@ -100,7 +134,7 @@ export default function Marketplace() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
         {/* Filters */}
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-3 mb-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-3">
           <Input placeholder="Search make, model…" value={search} onChange={(e) => { setSearch(e.target.value); setPage(1); }} className="col-span-2 md:col-span-1" />
           <Input placeholder="Make" value={make} onChange={(e) => { setMake(e.target.value); setPage(1); }} />
           <Select value={contractType} onChange={(e) => { setContractType(e.target.value); setPage(1); }}>
@@ -110,7 +144,19 @@ export default function Marketplace() {
             <option value="IJARAH">Ijarah Lease</option>
           </Select>
           <Input type="number" placeholder="Min price" value={minPrice} onChange={(e) => { setMinPrice(e.target.value); setPage(1); }} />
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
           <Input type="number" placeholder="Max price" value={maxPrice} onChange={(e) => { setMaxPrice(e.target.value); setPage(1); }} />
+          <Input placeholder="Near zip code" value={nearZip} onChange={(e) => { setNearZip(e.target.value); setPage(1); }} />
+          <Select value={radiusMiles} onChange={(e) => { setRadiusMiles(e.target.value); setPage(1); }} disabled={!nearZip}>
+            <option value="25">Within 25 mi</option>
+            <option value="50">Within 50 mi</option>
+            <option value="100">Within 100 mi</option>
+            <option value="250">Within 250 mi</option>
+          </Select>
+          {isAuthenticated && (
+            <Link to="/marketplace/favorites" className="text-sm text-teal-600 hover:underline flex items-center gap-1.5 px-3">❤️ My Favorites</Link>
+          )}
         </div>
 
         {loading ? (
@@ -121,7 +167,9 @@ export default function Marketplace() {
           <>
             <p className="text-sm text-gray-500 mb-4">{total} listing{total !== 1 ? 's' : ''}</p>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-              {listings.map((l) => <ListingCard key={l.id} listing={l} />)}
+              {listings.map((l) => (
+                <ListingCard key={l.id} listing={l} isFavorited={favoriteIds.has(l.id)} onToggleFavorite={toggleFavorite} />
+              ))}
             </div>
             {pages > 1 && (
               <div className="flex items-center justify-center gap-2 mt-8">

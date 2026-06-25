@@ -70,9 +70,14 @@ model User {
   created_at           DateTime    @default(now())
   updated_at           DateTime    @updatedAt
 
-  contracts  Contract[]
-  audit_logs AuditLog[]
-  listings   Listing[]
+  contracts        Contract[]
+  audit_logs       AuditLog[]
+  listings         Listing[]
+  favorites        Favorite[]
+  sent_messages    Message[]  @relation("sender")
+  received_messages Message[] @relation("recipient")
+  reviews_given    Review[]   @relation("reviewer")
+  reviews_received Review[]   @relation("reviewee")
 }
 
 model Contract {
@@ -126,10 +131,13 @@ model Contract {
   buyer_signed_at     DateTime?
   signed_pdf_url      String?
 
+  listing_id          String?
+
   created_at          DateTime         @default(now())
   updated_at          DateTime         @updatedAt
 
   creator    User        @relation(fields: [creator_id], references: [id])
+  listing    Listing?    @relation(fields: [listing_id], references: [id])
   signatures Signature[]
 }
 
@@ -152,13 +160,65 @@ model Listing {
   description           String?
   city                  String?
   state                 String?
+  zip                   String?
+  latitude              Float?
+  longitude             Float?
   photo_url             String?
+  recalls               Json?
+  has_recalls           Boolean        @default(false)
 
   views                 Int            @default(0)
   created_at            DateTime       @default(now())
   updated_at            DateTime       @updatedAt
 
-  seller User @relation(fields: [seller_id], references: [id])
+  seller    User       @relation(fields: [seller_id], references: [id])
+  favorites Favorite[]
+  messages  Message[]
+  reviews   Review[]
+  contracts Contract[]
+}
+
+model Favorite {
+  id         String   @id @default(uuid())
+  user_id    String
+  listing_id String
+  created_at DateTime @default(now())
+
+  user    User    @relation(fields: [user_id], references: [id])
+  listing Listing @relation(fields: [listing_id], references: [id])
+
+  @@unique([user_id, listing_id])
+}
+
+model Message {
+  id           String    @id @default(uuid())
+  listing_id   String
+  sender_id    String
+  recipient_id String
+  body         String
+  read_at      DateTime?
+  created_at   DateTime  @default(now())
+
+  listing   Listing @relation(fields: [listing_id], references: [id])
+  sender    User    @relation("sender", fields: [sender_id], references: [id])
+  recipient User    @relation("recipient", fields: [recipient_id], references: [id])
+}
+
+model Review {
+  id          String   @id @default(uuid())
+  listing_id  String
+  contract_id String
+  reviewer_id String
+  reviewee_id String
+  rating      Int
+  comment     String?
+  created_at  DateTime @default(now())
+
+  listing  Listing @relation(fields: [listing_id], references: [id])
+  reviewer User    @relation("reviewer", fields: [reviewer_id], references: [id])
+  reviewee User    @relation("reviewee", fields: [reviewee_id], references: [id])
+
+  @@unique([contract_id, reviewer_id])
 }
 
 model Signature {

@@ -51,4 +51,22 @@ function getPublicUrl(key) {
   return `https://${BUCKET}.s3.${process.env.AWS_REGION}.amazonaws.com/${key}`;
 }
 
-module.exports = { uploadContract, getDownloadUrl, deleteFile, getPublicUrl };
+/**
+ * Upload a listing photo buffer to S3. Returns the public URL.
+ */
+async function uploadListingPhoto(listingId, buffer, contentType = 'image/jpeg') {
+  const ext = contentType.split('/')[1] || 'jpg';
+  const key = `listings/${listingId}/${Date.now()}.${ext}`;
+
+  await s3.send(new PutObjectCommand({
+    Bucket: BUCKET,
+    Key: key,
+    Body: buffer,
+    ContentType: contentType,
+    ACL: 'public-read',
+  }));
+
+  return getPublicUrl(key);
+}
+
+module.exports = { uploadContract, getDownloadUrl, deleteFile, getPublicUrl, uploadListingPhoto };

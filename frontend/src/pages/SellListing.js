@@ -11,7 +11,7 @@ import { toast } from 'react-toastify';
 const initialState = {
   vehicle_vin: '', vehicle_year: '', vehicle_make: '', vehicle_model: '', vehicle_trim: '',
   vehicle_mileage: '', vehicle_color: '', title_status: '',
-  asking_price: '', contract_type_offered: 'MURABAHA', description: '', city: '', state: '',
+  asking_price: '', contract_type_offered: 'MURABAHA', description: '', city: '', state: '', zip: '',
 };
 
 export default function SellListing() {
@@ -21,6 +21,8 @@ export default function SellListing() {
   const [vinError, setVinError] = useState('');
   const [recalls, setRecalls] = useState([]);
   const [submitting, setSubmitting] = useState(false);
+  const [photoFile, setPhotoFile] = useState(null);
+  const [photoPreview, setPhotoPreview] = useState(null);
 
   const update = (patch) => setForm((f) => ({ ...f, ...patch }));
 
@@ -44,6 +46,13 @@ export default function SellListing() {
 
   const canSubmit = form.vehicle_year && form.vehicle_make && form.vehicle_model && form.asking_price;
 
+  const handlePhotoChange = (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setPhotoFile(file);
+    setPhotoPreview(URL.createObjectURL(file));
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitting(true);
@@ -56,6 +65,10 @@ export default function SellListing() {
         asking_price: Number(form.asking_price),
         title_status: form.title_status || null,
       });
+      if (photoFile) {
+        try { await listingsAPI.uploadPhoto(data.listing.id, photoFile); }
+        catch { toast.warn('Listing published, but photo upload failed.'); }
+      }
       toast.success('Listing published!');
       navigate(`/marketplace/${data.listing.id}`);
     } catch (err) {
@@ -115,12 +128,21 @@ export default function SellListing() {
                 <option value="IJARAH">Ijarah (Lease)</option>
               </Select>
             </div>
-            <div className="grid grid-cols-2 gap-4 mb-4">
+            <div className="grid grid-cols-3 gap-4 mb-4">
               <Input label="City" value={form.city} onChange={(e) => update({ city: e.target.value })} />
               <Input label="State" value={form.state} onChange={(e) => update({ state: e.target.value })} />
+              <Input label="Zip Code" value={form.zip} onChange={(e) => update({ zip: e.target.value })} helpText="Enables radius search for buyers" />
             </div>
             <Textarea label="Description" value={form.description} onChange={(e) => update({ description: e.target.value })}
               placeholder="Condition, history, why you're selling, anything buyers should know…" />
+          </Card>
+
+          <Card header="Photo">
+            <input type="file" accept="image/*" onChange={handlePhotoChange} className="block text-sm text-gray-600 mb-3" />
+            {photoPreview && (
+              <img src={photoPreview} alt="Preview" className="w-full h-48 object-cover rounded-card" />
+            )}
+            <p className="text-xs text-gray-400 mt-2">Optional — listings without a photo show a placeholder.</p>
           </Card>
 
           <div className="flex justify-end gap-3">

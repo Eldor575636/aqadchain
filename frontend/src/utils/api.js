@@ -69,11 +69,32 @@ export const calculatorAPI = {
 export const listingsAPI = {
   browse: (params) => api.get('/listings', { params }),
   get: (id) => api.get(`/listings/${id}`),
+  similar: (id) => api.get(`/listings/${id}/similar`),
   mine: () => api.get('/listings/mine'),
   create: (data) => api.post('/listings', data),
   update: (id, data) => api.put(`/listings/${id}`, data),
   setStatus: (id, status) => api.put(`/listings/${id}/status`, { status }),
   delete: (id) => api.delete(`/listings/${id}`),
+  uploadPhoto: (id, file) => {
+    const form = new FormData();
+    form.append('photo', file);
+    return api.post(`/listings/${id}/photo`, form, { headers: { 'Content-Type': 'multipart/form-data' } });
+  },
+  toggleFavorite: (id) => api.post(`/listings/${id}/favorite`),
+  myFavorites: () => api.get('/listings/favorites/mine'),
+};
+
+// Messages
+export const messagesAPI = {
+  conversations: () => api.get('/messages/conversations'),
+  thread: (listingId, otherUserId) => api.get(`/messages/${listingId}/${otherUserId}`),
+  send: (data) => api.post('/messages', data),
+};
+
+// Reviews
+export const reviewsAPI = {
+  forSeller: (userId) => api.get(`/reviews/seller/${userId}`),
+  create: (data) => api.post('/reviews', data),
 };
 
 // Admin

@@ -48,6 +48,7 @@ const contractSchema = Joi.object({
   ijarah_subtype: Joi.string().valid('OPERATING', 'IMIT').allow(null),
   security_deposit: Joi.number().min(0).allow(null),
   residual_value: Joi.number().min(0).allow(null),
+  listing_id: Joi.string().allow('', null),
 });
 
 // POST /api/contracts
@@ -55,7 +56,7 @@ router.post('/', auth, validate(contractSchema), async (req, res, next) => {
   try {
     const contract_number = await generateContractNumber();
     const contract = await prisma.contract.create({
-      data: { ...req.body, creator_id: req.user.id, contract_number, status: 'DRAFT' },
+      data: { ...req.body, listing_id: req.body.listing_id || null, creator_id: req.user.id, contract_number, status: 'DRAFT' },
     });
     await sendContractCreatedEmail(req.user, contract);
     await log(req.user.id, 'CONTRACT_CREATED', 'Contract', contract.id);

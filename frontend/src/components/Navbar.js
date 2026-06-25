@@ -87,6 +87,7 @@ export function AuthNavbar() {
             <NavLink to="/contracts" className={({ isActive }) => isActive ? 'text-teal-600' : 'hover:text-gray-900'}>Contracts</NavLink>
             <NavLink to="/marketplace" className={({ isActive }) => isActive ? 'text-teal-600' : 'hover:text-gray-900'}>Marketplace</NavLink>
             <NavLink to="/marketplace/mine" className={({ isActive }) => isActive ? 'text-teal-600' : 'hover:text-gray-900'}>My Listings</NavLink>
+            <NavLink to="/messages" className={({ isActive }) => isActive ? 'text-teal-600' : 'hover:text-gray-900'}>Messages</NavLink>
             {dbUser?.role === 'ADMIN' && (
               <NavLink to="/admin" className={({ isActive }) => isActive ? 'text-teal-600' : 'hover:text-gray-900'}>Admin</NavLink>
             )}

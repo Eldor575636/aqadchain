@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import { contractsAPI, vehiclesAPI } from '../utils/api';
+import { contractsAPI, vehiclesAPI, reviewsAPI } from '../utils/api';
 import { AuthNavbar } from '../components/Navbar';
 import { ContractStatusBadge } from '../components/Badge';
 import Button from '../components/Button';
@@ -40,6 +40,10 @@ export default function ContractDetail() {
   const [contractHtml, setContractHtml] = useState(null);
   const [fuelEconomy, setFuelEconomy] = useState(null);
   const [vehiclePhoto, setVehiclePhoto] = useState(null);
+  const [reviewRating, setReviewRating] = useState(5);
+  const [reviewComment, setReviewComment] = useState('');
+  const [reviewSubmitted, setReviewSubmitted] = useState(false);
+  const [reviewSubmitting, setReviewSubmitting] = useState(false);
 
   const load = () => {
     setLoading(true);
@@ -107,6 +111,20 @@ export default function ContractDetail() {
     } catch (err) {
       toast.error(err.message);
     } finally { setActionLoading(false); }
+  };
+
+  const handleSubmitReview = async (e) => {
+    e.preventDefault();
+    setReviewSubmitting(true);
+    try {
+      await reviewsAPI.create({ contract_id: id, rating: reviewRating, comment: reviewComment || undefined });
+      toast.success('Review submitted — thank you!');
+      setReviewSubmitted(true);
+    } catch (err) {
+      toast.error(err.message || 'Failed to submit review');
+    } finally {
+      setReviewSubmitting(false);
+    }
   };
 
   const handleViewContract = async () => {
@@ -287,6 +305,31 @@ export default function ContractDetail() {
                 ))}
               </div>
             </Card>
+
+            {/* Rate the Seller */}
+            {c.listing_id && (c.status === 'SIGNED' || c.status === 'COMPLETED') && (
+              <Card header="Rate the Seller">
+                {reviewSubmitted ? (
+                  <p className="text-sm text-green-600 font-medium">✓ Thanks for your review!</p>
+                ) : (
+                  <form onSubmit={handleSubmitReview}>
+                    <div className="flex gap-1 mb-3 text-2xl">
+                      {[1, 2, 3, 4, 5].map((n) => (
+                        <button type="button" key={n} onClick={() => setReviewRating(n)} className={n <= reviewRating ? 'text-amber-400' : 'text-gray-200'}>★</button>
+                      ))}
+                    </div>
+                    <textarea
+                      value={reviewComment}
+                      onChange={(e) => setReviewComment(e.target.value)}
+                      placeholder="How was your experience with the seller? (optional)"
+                      className="input mb-3"
+                      rows={3}
+                    />
+                    <Button type="submit" loading={reviewSubmitting} className="w-full">Submit Review</Button>
+                  </form>
+                )}
+              </Card>
+            )}
 
             {/* Audit Log */}
             <Card header="Activity Log">
