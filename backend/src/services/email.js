@@ -147,6 +147,7 @@ async function sendDemoRequestConfirmation(request) {
     <p>Thanks for requesting a live demo of AqadChain. Our team will confirm your slot shortly.</p>
     <div class="detail-row"><span class="detail-label">Date</span><span class="detail-value">${dateStr}</span></div>
     <div class="detail-row"><span class="detail-label">Time</span><span class="detail-value">${request.preferred_time}</span></div>
+    ${request.meet_link ? `<br/><a href="${request.meet_link}" class="btn">Join Google Meet →</a><p style="font-size:13px;color:#6B7280;">A calendar invite with this link has also been sent to your email.</p>` : ''}
     <br/>
     <p style="font-size:13px;color:#6B7280;">We'll reach out at ${request.email}${request.phone ? ` or ${request.phone}` : ''} to confirm.</p>
   `);
@@ -164,6 +165,7 @@ async function sendDemoRequestNotification(request) {
     <div class="detail-row"><span class="detail-label">Company</span><span class="detail-value">${request.company || '—'}</span></div>
     <div class="detail-row"><span class="detail-label">Date</span><span class="detail-value">${dateStr}</span></div>
     <div class="detail-row"><span class="detail-label">Time</span><span class="detail-value">${request.preferred_time}</span></div>
+    ${request.meet_link ? `<div class="detail-row"><span class="detail-label">Meet Link</span><span class="detail-value"><a href="${request.meet_link}">${request.meet_link}</a></span></div>` : ''}
     ${request.message ? `<p>${request.message}</p>` : ''}
   `);
   await send(adminEmail, `New demo request: ${request.name}`, html);

@@ -257,5 +257,7 @@ model DemoRequest {
   preferred_time  String
   message         String?
   status          String   @default("PENDING")
+  meet_link       String?
+  calendar_event_id String?
   created_at      DateTime @default(now())
 }

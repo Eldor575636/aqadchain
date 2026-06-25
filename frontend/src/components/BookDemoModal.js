@@ -21,6 +21,7 @@ export default function BookDemoModal({ isOpen, onClose }) {
   const [form, setForm] = useState({ name: '', email: '', phone: '', company: '', preferred_date: '', preferred_time: '', message: '' });
   const [submitting, setSubmitting] = useState(false);
   const [done, setDone] = useState(false);
+  const [meetLink, setMeetLink] = useState(null);
 
   const update = (patch) => setForm((f) => ({ ...f, ...patch }));
 
@@ -30,7 +31,8 @@ export default function BookDemoModal({ isOpen, onClose }) {
     e.preventDefault();
     setSubmitting(true);
     try {
-      await demoAPI.create(form);
+      const { data } = await demoAPI.create(form);
+      setMeetLink(data.request?.meet_link || null);
       setDone(true);
     } catch (err) {
       alert(err.message || 'Failed to book demo. Please try again.');
@@ -41,6 +43,7 @@ export default function BookDemoModal({ isOpen, onClose }) {
 
   const handleClose = () => {
     setDone(false);
+    setMeetLink(null);
     setForm({ name: '', email: '', phone: '', company: '', preferred_date: '', preferred_time: '', message: '' });
     onClose();
   };
@@ -55,7 +58,12 @@ export default function BookDemoModal({ isOpen, onClose }) {
             We'll see you on {new Date(form.preferred_date).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })} at {form.preferred_time}.
             A confirmation has been sent to {form.email}.
           </p>
-          <Button onClick={handleClose} className="w-full">Done</Button>
+          {meetLink && (
+            <a href={meetLink} target="_blank" rel="noreferrer" className="btn-primary w-full mb-3 inline-flex items-center justify-center gap-2">
+              🎥 Join Google Meet
+            </a>
+          )}
+          <Button onClick={handleClose} variant={meetLink ? 'secondary' : 'primary'} className="w-full">Done</Button>
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="space-y-4">
