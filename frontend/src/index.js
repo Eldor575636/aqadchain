@@ -14,10 +14,12 @@ root.render(
     <Auth0Provider
       domain={process.env.REACT_APP_AUTH0_DOMAIN}
       clientId={process.env.REACT_APP_AUTH0_CLIENT_ID}
+      cacheLocation="localstorage"
+      useRefreshTokens={true}
       authorizationParams={{
         redirect_uri: window.location.origin + '/auth/callback',
         audience: 'https://api.aqadchain.com',
-        scope: 'openid profile email',
+        scope: 'openid profile email offline_access',
       }}
     >
       <UserProvider>
