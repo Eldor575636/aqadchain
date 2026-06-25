@@ -755,6 +755,48 @@ export default function Home() {
       {/* ── TRUST TICKER ────────────────────────────────────────── */}
       <TrustTicker />
 
+      {/* ── PARTNER CHARITIES ────────────────────────────────────── */}
+      <section className="py-20 px-4">
+        <div className="max-w-5xl mx-auto">
+          <FadeUp className="text-center mb-12">
+            <p className="text-teal-400 text-xs font-semibold uppercase tracking-widest mb-3">Late Fee Beneficiaries</p>
+            <h2 className="text-3xl md:text-4xl font-extrabold font-heading text-white mb-3">Charity partners</h2>
+            <p className="text-white/40 max-w-xl mx-auto text-sm leading-relaxed">
+              When a late fee is charged, 100% goes to a charity both parties agree on at signing. These are our recommended partners across the Bay Area and California.
+            </p>
+          </FadeUp>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[
+              { name: 'Muslim Community Association', location: 'Santa Clara, CA', category: 'Mosque', icon: '🕌' },
+              { name: 'Islamic Society of SF', location: 'San Francisco, CA', category: 'Mosque', icon: '🕌' },
+              { name: 'Islamic Relief USA', location: 'California Chapter', category: 'Relief', icon: '🌙' },
+              { name: 'Zakat Foundation', location: 'National · CA Hub', category: 'Zakat', icon: '🌙' },
+              { name: 'UCSF Benioff Children\'s', location: 'San Francisco, CA', category: 'Hospital', icon: '🏥' },
+              { name: 'Lucile Packard Children\'s', location: 'Stanford, CA', category: 'Hospital', icon: '🏥' },
+              { name: 'Shriners Hospital', location: 'Sacramento, CA', category: 'Hospital', icon: '🏥' },
+              { name: 'CHLA', location: 'Los Angeles, CA', category: 'Hospital', icon: '🏥' },
+              { name: 'American Red Cross', location: 'Bay Area Chapter', category: 'Relief', icon: '🔴' },
+              { name: 'SF-Marin Food Bank', location: 'San Francisco, CA', category: 'Food', icon: '🍞' },
+              { name: 'Second Harvest', location: 'Silicon Valley, CA', category: 'Food', icon: '🍞' },
+              { name: 'Pediatric Cancer Research', location: 'Orange County, CA', category: 'Cancer', icon: '💛' },
+            ].map(({ name, location, category, icon }) => (
+              <FadeIn key={name}>
+                <div className="rounded-xl p-4 border border-white/8 hover:border-teal-500/30 transition-all duration-300 group"
+                  style={{ background: 'rgba(255,255,255,0.02)', backdropFilter: 'blur(10px)' }}>
+                  <div className="text-2xl mb-3">{icon}</div>
+                  <p className="text-white text-sm font-semibold leading-snug group-hover:text-teal-300 transition-colors">{name}</p>
+                  <p className="text-white/35 text-xs mt-1">{location}</p>
+                  <span className="inline-block mt-2 text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full"
+                    style={{ background: 'rgba(13,110,99,0.15)', color: '#4fd1c5' }}>
+                    {category}
+                  </span>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── FEATURED IN ──────────────────────────────────────────── */}
       <section className="py-16 px-4">
         <div className="max-w-5xl mx-auto">
