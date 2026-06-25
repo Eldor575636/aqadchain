@@ -97,6 +97,11 @@ export const reviewsAPI = {
   create: (data) => api.post('/reviews', data),
 };
 
+// Demo requests
+export const demoAPI = {
+  create: (data) => api.post('/demo-requests', data),
+};
+
 // Admin
 export const adminAPI = {
   getUsers: (params) => api.get('/admin/users', { params }),

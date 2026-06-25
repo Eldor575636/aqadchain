@@ -246,3 +246,16 @@ model AuditLog {
 
   user User? @relation(fields: [user_id], references: [id])
 }
+
+model DemoRequest {
+  id              String   @id @default(uuid())
+  name            String
+  email           String
+  phone           String?
+  company         String?
+  preferred_date  DateTime
+  preferred_time  String
+  message         String?
+  status          String   @default("PENDING")
+  created_at      DateTime @default(now())
+}

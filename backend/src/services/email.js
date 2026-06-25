@@ -139,6 +139,36 @@ async function sendDownloadReadyEmail(user, contract, downloadUrl) {
   await send(user.email, `Download Ready: Contract ${contract.contract_number}`, html);
 }
 
+async function sendDemoRequestConfirmation(request) {
+  const dateStr = new Date(request.preferred_date).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+  const html = baseLayout(`
+    <h2>Demo session requested ✓</h2>
+    <p>Hi ${request.name},</p>
+    <p>Thanks for requesting a live demo of AqadChain. Our team will confirm your slot shortly.</p>
+    <div class="detail-row"><span class="detail-label">Date</span><span class="detail-value">${dateStr}</span></div>
+    <div class="detail-row"><span class="detail-label">Time</span><span class="detail-value">${request.preferred_time}</span></div>
+    <br/>
+    <p style="font-size:13px;color:#6B7280;">We'll reach out at ${request.email}${request.phone ? ` or ${request.phone}` : ''} to confirm.</p>
+  `);
+  await send(request.email, 'Your AqadChain demo request is confirmed', html);
+}
+
+async function sendDemoRequestNotification(request) {
+  const adminEmail = process.env.ADMIN_NOTIFICATION_EMAIL || FROM.email;
+  const dateStr = new Date(request.preferred_date).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+  const html = baseLayout(`
+    <h2>New demo request</h2>
+    <div class="detail-row"><span class="detail-label">Name</span><span class="detail-value">${request.name}</span></div>
+    <div class="detail-row"><span class="detail-label">Email</span><span class="detail-value">${request.email}</span></div>
+    <div class="detail-row"><span class="detail-label">Phone</span><span class="detail-value">${request.phone || '—'}</span></div>
+    <div class="detail-row"><span class="detail-label">Company</span><span class="detail-value">${request.company || '—'}</span></div>
+    <div class="detail-row"><span class="detail-label">Date</span><span class="detail-value">${dateStr}</span></div>
+    <div class="detail-row"><span class="detail-label">Time</span><span class="detail-value">${request.preferred_time}</span></div>
+    ${request.message ? `<p>${request.message}</p>` : ''}
+  `);
+  await send(adminEmail, `New demo request: ${request.name}`, html);
+}
+
 module.exports = {
   sendWelcomeEmail,
   sendOnboardingCompleteEmail,
@@ -146,4 +176,6 @@ module.exports = {
   sendSignatureRequestEmail,
   sendContractSignedEmail,
   sendDownloadReadyEmail,
+  sendDemoRequestConfirmation,
+  sendDemoRequestNotification,
 };

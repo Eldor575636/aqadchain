@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useUser } from '../hooks/useUser';
+import BookDemoModal from './BookDemoModal';
 
 function Logo() {
   return (
@@ -18,6 +19,7 @@ function Logo() {
 
 export function PublicNavbar({ dark = false }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [demoOpen, setDemoOpen] = useState(false);
   const { loginWithRedirect } = useAuth0();
 
   const bg = dark ? 'bg-transparent' : 'bg-white border-b border-gray-200';
@@ -38,6 +40,15 @@ export function PublicNavbar({ dark = false }) {
         </nav>
 
         <div className="hidden md:flex items-center space-x-3">
+          <button
+            onClick={() => setDemoOpen(true)}
+            className="flex items-center gap-1.5 text-sm font-semibold px-4 py-2 rounded-btn transition-all"
+            style={dark
+              ? { background: 'rgba(201,168,76,0.15)', color: '#C9A84C', border: '1px solid rgba(201,168,76,0.35)' }
+              : { background: '#FDF6E3', color: '#92702A', border: '1px solid #F0E0B0' }}
+          >
+            📅 Book a Demo
+          </button>
           <button onClick={() => loginWithRedirect()} className={`text-sm font-medium transition-colors ${dark ? 'text-white/50 hover:text-white' : 'text-gray-700 hover:text-teal-600'}`}>Log in</button>
           <button onClick={() => loginWithRedirect({ authorizationParams: { screen_hint: 'signup' } })}
             className="text-sm px-4 py-2 rounded-btn font-semibold transition-all"
@@ -61,11 +72,14 @@ export function PublicNavbar({ dark = false }) {
           <NavLink to="/about" className="block text-sm font-medium text-gray-700 py-2" onClick={() => setMenuOpen(false)}>About</NavLink>
           <NavLink to="/faq" className="block text-sm font-medium text-gray-700 py-2" onClick={() => setMenuOpen(false)}>FAQ</NavLink>
           <div className="pt-2 border-t border-gray-100 flex flex-col space-y-2">
+            <button onClick={() => { setMenuOpen(false); setDemoOpen(true); }} className="btn-secondary w-full">📅 Book a Demo</button>
             <button onClick={() => loginWithRedirect()} className="btn-secondary w-full">Log in</button>
             <button onClick={() => loginWithRedirect({ authorizationParams: { screen_hint: 'signup' } })} className="btn-primary w-full">Get Started Free</button>
           </div>
         </div>
       )}
+
+      <BookDemoModal isOpen={demoOpen} onClose={() => setDemoOpen(false)} />
     </header>
   );
 }
@@ -73,6 +87,7 @@ export function PublicNavbar({ dark = false }) {
 export function AuthNavbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
+  const [demoOpen, setDemoOpen] = useState(false);
   const { logout } = useAuth0();
   const { dbUser } = useUser();
   const navigate = useNavigate();
@@ -95,6 +110,13 @@ export function AuthNavbar() {
         </div>
 
         <div className="flex items-center space-x-3">
+          <button
+            onClick={() => setDemoOpen(true)}
+            className="hidden md:flex items-center gap-1.5 text-sm font-semibold px-4 py-2 rounded-btn"
+            style={{ background: '#FDF6E3', color: '#92702A', border: '1px solid #F0E0B0' }}
+          >
+            📅 Book a Demo
+          </button>
           <button onClick={() => navigate('/contracts/new/type')} className="btn-primary hidden md:flex text-sm px-4 py-2">
             + New Contract
           </button>
@@ -117,6 +139,7 @@ export function AuthNavbar() {
           </div>
         </div>
       </div>
+      <BookDemoModal isOpen={demoOpen} onClose={() => setDemoOpen(false)} />
     </header>
   );
 }
