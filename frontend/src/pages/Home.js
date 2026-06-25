@@ -205,6 +205,33 @@ function StatCounter({ end, prefix = '', suffix = '', label, decimals = 0 }) {
   );
 }
 
+/* ─── Press & charity ticker data ────────────────────────────────── */
+const pressItems = [
+  { name: 'San Francisco Chronicle', style: 'font-serif font-bold text-lg' },
+  { name: 'TechCrunch', style: 'font-extrabold text-lg tracking-tight' },
+  { name: 'SF Gate', style: 'font-bold text-lg uppercase tracking-wider' },
+  { name: 'Forbes', style: 'font-serif font-bold text-xl italic' },
+  { name: 'Wired', style: 'font-extrabold text-xl uppercase tracking-widest' },
+  { name: 'Business Insider', style: 'font-bold text-base uppercase tracking-wide' },
+  { name: 'The Information', style: 'font-serif text-lg font-semibold' },
+  { name: 'KTVU Fox 2', style: 'font-extrabold text-base uppercase tracking-widest' },
+];
+
+const charityItems = [
+  { name: 'Muslim Community Association', icon: '🕌' },
+  { name: 'Islamic Society of SF', icon: '🕌' },
+  { name: 'Islamic Relief USA', icon: '🌙' },
+  { name: 'Zakat Foundation', icon: '🌙' },
+  { name: 'UCSF Benioff Children\'s', icon: '🏥' },
+  { name: 'Lucile Packard Children\'s', icon: '🏥' },
+  { name: 'Shriners Hospital', icon: '🏥' },
+  { name: 'American Red Cross', icon: '🔴' },
+  { name: 'SF-Marin Food Bank', icon: '🍞' },
+  { name: 'Second Harvest', icon: '🍞' },
+  { name: 'Pediatric Cancer Research', icon: '💛' },
+  { name: 'CHLA', icon: '🏥' },
+];
+
 /* ─── Scrolling trust ticker ─────────────────────────────────────── */
 const trustItems = [
   '✦ Shariah-Compliant',
@@ -1032,56 +1059,38 @@ export default function Home() {
       </section>
 
       {/* ── FEATURED IN ──────────────────────────────────────────── */}
-      <section className="py-14 px-4 border-t border-white/5">
-        <div className="max-w-5xl mx-auto">
-          <FadeIn>
-            <p className="text-center text-white/20 text-xs font-semibold uppercase tracking-widest mb-8">As seen in</p>
-            <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-5">
-              {[
-                { name: 'San Francisco Chronicle', style: 'font-serif font-bold text-lg' },
-                { name: 'TechCrunch', style: 'font-extrabold text-lg tracking-tight' },
-                { name: 'SF Gate', style: 'font-bold text-lg uppercase tracking-wider' },
-                { name: 'Forbes', style: 'font-serif font-bold text-xl italic' },
-                { name: 'Wired', style: 'font-extrabold text-xl uppercase tracking-widest' },
-                { name: 'Business Insider', style: 'font-bold text-base uppercase tracking-wide' },
-                { name: 'The Information', style: 'font-serif text-lg font-semibold' },
-                { name: 'KTVU Fox 2', style: 'font-extrabold text-base uppercase tracking-widest' },
-              ].map(({ name, style }) => (
-                <span key={name} className={`${style} text-white/20 hover:text-white/45 transition-colors duration-300 cursor-default select-none`}>
-                  {name}
-                </span>
-              ))}
-            </div>
-          </FadeIn>
+      <section className="py-14 border-t border-white/5 overflow-hidden">
+        <p className="text-center text-white/20 text-xs font-semibold uppercase tracking-widest mb-8 px-4">As seen in</p>
+        <div className="overflow-hidden">
+          <motion.div
+            animate={{ x: ['0%', '-50%'] }}
+            transition={{ duration: 32, repeat: Infinity, ease: 'linear' }}
+            className="flex gap-10 w-max"
+          >
+            {[...pressItems, ...pressItems].map(({ name, style }, i) => (
+              <span key={i} className={`${style} text-white/20 hover:text-white/45 transition-colors duration-300 cursor-default select-none flex-shrink-0`}>
+                {name}
+              </span>
+            ))}
+          </motion.div>
         </div>
       </section>
 
       {/* ── CHARITY PARTNERS ─────────────────────────────────────── */}
-      <section className="py-14 px-4 border-t border-white/5">
-        <div className="max-w-5xl mx-auto">
-          <FadeIn>
-            <p className="text-center text-white/20 text-xs font-semibold uppercase tracking-widest mb-8">Late fees go to charity — choose from our partners</p>
-            <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-5">
-              {[
-                { name: 'Muslim Community Association', icon: '🕌' },
-                { name: 'Islamic Society of SF', icon: '🕌' },
-                { name: 'Islamic Relief USA', icon: '🌙' },
-                { name: 'Zakat Foundation', icon: '🌙' },
-                { name: 'UCSF Benioff Children\'s', icon: '🏥' },
-                { name: 'Lucile Packard Children\'s', icon: '🏥' },
-                { name: 'Shriners Hospital', icon: '🏥' },
-                { name: 'American Red Cross', icon: '🔴' },
-                { name: 'SF-Marin Food Bank', icon: '🍞' },
-                { name: 'Second Harvest', icon: '🍞' },
-                { name: 'Pediatric Cancer Research', icon: '💛' },
-                { name: 'CHLA', icon: '🏥' },
-              ].map(({ name, icon }) => (
-                <span key={name} className="flex items-center gap-1.5 text-white/20 hover:text-white/45 transition-colors duration-300 cursor-default select-none text-sm font-semibold">
-                  <span className="text-base">{icon}</span>{name}
-                </span>
-              ))}
-            </div>
-          </FadeIn>
+      <section className="py-14 border-t border-white/5 overflow-hidden">
+        <p className="text-center text-white/20 text-xs font-semibold uppercase tracking-widest mb-8 px-4">Late fees go to charity — choose from our partners</p>
+        <div className="overflow-hidden">
+          <motion.div
+            animate={{ x: ['0%', '-50%'] }}
+            transition={{ duration: 38, repeat: Infinity, ease: 'linear' }}
+            className="flex gap-8 w-max"
+          >
+            {[...charityItems, ...charityItems].map(({ name, icon }, i) => (
+              <span key={i} className="flex items-center gap-1.5 text-white/20 hover:text-white/45 transition-colors duration-300 cursor-default select-none text-sm font-semibold flex-shrink-0">
+                <span className="text-base">{icon}</span>{name}
+              </span>
+            ))}
+          </motion.div>
         </div>
       </section>
 
