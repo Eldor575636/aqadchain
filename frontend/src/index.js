@@ -16,6 +16,7 @@ root.render(
       clientId={process.env.REACT_APP_AUTH0_CLIENT_ID}
       authorizationParams={{
         redirect_uri: window.location.origin + '/auth/callback',
+        audience: 'https://api.aqadchain.com',
         scope: 'openid profile email',
       }}
     >
