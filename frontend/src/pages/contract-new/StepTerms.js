@@ -140,10 +140,10 @@ export default function StepTerms({ formData, updateForm, goToStep }) {
 
                 <div>
                   <label className="label">Markup Percentage: <span className="font-bold text-teal-600">{formData.markup_percentage}%</span></label>
-                  <input type="range" min="0" max="15" step="0.5" value={formData.markup_percentage}
+                  <input type="range" min="0" max="25" step="0.5" value={formData.markup_percentage}
                     onChange={(e) => updateForm({ markup_percentage: e.target.value })}
                     className="w-full accent-teal-500" />
-                  <div className="flex justify-between text-xs text-gray-400 mt-1"><span>0%</span><span>Max 15%</span></div>
+                  <div className="flex justify-between text-xs text-gray-400 mt-1"><span>0%</span><span>Max 25%</span></div>
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">

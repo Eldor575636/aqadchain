@@ -33,7 +33,7 @@ const contractSchema = Joi.object({
   buyer_address: Joi.string().allow('', null),
   car_price: Joi.number().positive().allow(null),
   down_payment: Joi.number().min(0).allow(null),
-  markup_percentage: Joi.number().min(0).max(15).allow(null),
+  markup_percentage: Joi.number().min(0).max(25).allow(null),
   markup_amount: Joi.number().min(0).allow(null),
   financed_amount: Joi.number().min(0).allow(null),
   apr: Joi.number().min(0).max(30).allow(null),

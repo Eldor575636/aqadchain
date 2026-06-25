@@ -40,7 +40,7 @@ export default function HowItWorks() {
               },
               {
                 num: '05', title: 'Set deal terms',
-                body: 'Enter the car price, down payment, markup percentage (capped at 15%), financing term, and payment frequency. A live calculator shows the monthly payment and total payable amount as you type.',
+                body: 'Enter the car price, down payment, markup percentage (capped at 25%), financing term, and payment frequency. A live calculator shows the monthly payment and total payable amount as you type.',
               },
               {
                 num: '06', title: 'Review the contract',

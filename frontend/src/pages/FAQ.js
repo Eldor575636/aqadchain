@@ -26,7 +26,7 @@ const sections = [
     items: [
       { question: 'Is this legally enforceable in California?', answer: 'Yes. AqadChain contracts are structured as standard deferred-payment sale agreements governed by California law. They include all legally required clauses for secured vehicle sales and are executed via compliant e-signatures.' },
       { question: 'Does AqadChain provide Shariah certification?', answer: 'No. AqadChain is a software platform that provides contract templates inspired by AAOIFI Islamic finance standards. We do not issue fatwas or Shariah certifications. Users should consult a qualified Shariah advisor for religious guidance.' },
-      { question: 'What is the maximum markup percentage?', answer: 'AqadChain caps markup at 15% to prevent predatory terms. This is a platform-level safeguard — parties may agree on any lower markup.' },
+      { question: 'What is the maximum markup percentage?', answer: 'AqadChain caps markup at 25% to prevent predatory terms. This is a platform-level safeguard — parties may agree on any lower markup.' },
       { question: 'How does the late fee work without charging interest?', answer: 'If a payment is more than 30 days late, a fixed daily fee applies — but the seller does not keep this fee. It is donated to a charity both parties agreed on at signing. This creates accountability without the seller profiting from tardiness (which would resemble Riba).' },
     ],
   },

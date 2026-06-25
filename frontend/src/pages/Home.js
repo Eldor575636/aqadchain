@@ -338,8 +338,8 @@ function LiveCalculator() {
                         <label className="text-white/50 text-sm">Markup: <span className="text-teal-400 font-bold">{markup}%</span></label>
                         {tab === 'musawama' && <span className="text-white/30 text-xs">Cost not disclosed</span>}
                       </div>
-                      <input type="range" min="0" max="15" step="0.5" value={markup} onChange={(e) => setMarkup(e.target.value)} className="w-full accent-teal-500" />
-                      <div className="flex justify-between text-xs text-white/20 mt-1"><span>0%</span><span>15% max</span></div>
+                      <input type="range" min="0" max="25" step="0.5" value={markup} onChange={(e) => setMarkup(e.target.value)} className="w-full accent-teal-500" />
+                      <div className="flex justify-between text-xs text-white/20 mt-1"><span>0%</span><span>25% max</span></div>
                     </div>
                     <div>
                       <label className="text-white/50 text-sm block mb-2">Term</label>
@@ -842,7 +842,7 @@ export default function Home() {
             <ContractCard
               title="Murabaha" subtitle="Cost-Plus Financing" isHighlight delay={0.1}
               description="The seller discloses their purchase cost and agrees on a fixed profit margin. The most transparent and widely used Islamic finance structure."
-              points={['Seller cost fully disclosed', 'Agreed markup percentage', 'Fixed installment schedule', 'Maximum 15% markup']}
+              points={['Seller cost fully disclosed', 'Agreed markup percentage', 'Fixed installment schedule', 'Maximum 25% markup']}
             />
             <ContractCard
               title="Musawama" subtitle="Negotiated Price Sale" isHighlight={false} delay={0.2}

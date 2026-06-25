@@ -15,7 +15,7 @@ function calculate({ car_price, down_payment, markup_percentage, apr, term_month
   const annualRate = parseFloat(apr) / 100;
   const months = parseInt(term_months);
 
-  if (markupPct > 15) throw new Error('Markup percentage cannot exceed 15%');
+  if (markupPct > 25) throw new Error('Markup percentage cannot exceed 25%');
   if (down > price * 0.25) throw new Error('Down payment cannot exceed 25% of car price');
 
   const financed = price - down;

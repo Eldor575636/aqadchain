@@ -7,7 +7,7 @@ const calcSchema = Joi.object({
   contract_type: Joi.string().valid('MURABAHA', 'MUSAWAMA', 'IJARAH').default('MURABAHA'),
   car_price: Joi.number().positive().required(),
   down_payment: Joi.number().min(0).default(0),
-  markup_percentage: Joi.number().min(0).max(15).when('contract_type', { is: 'IJARAH', then: Joi.optional(), otherwise: Joi.required() }),
+  markup_percentage: Joi.number().min(0).max(25).when('contract_type', { is: 'IJARAH', then: Joi.optional(), otherwise: Joi.required() }),
   apr: Joi.number().min(0).max(30).when('contract_type', { is: 'IJARAH', then: Joi.optional(), otherwise: Joi.required() }),
   term_months: Joi.number().valid(6, 12, 18, 24, 36, 48, 60).required(),
   payment_frequency: Joi.string().valid('WEEKLY', 'MONTHLY').default('MONTHLY'),
