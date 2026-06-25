@@ -12,7 +12,12 @@ const createSchema = Joi.object({
   email: Joi.string().email().required(),
   phone: Joi.string().max(20).allow('', null),
   company: Joi.string().max(100).allow('', null),
-  preferred_date: Joi.date().min('now').required(),
+  preferred_date: Joi.date().custom((value, helpers) => {
+    const now = new Date();
+    const startOfTodayUTC = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()));
+    if (value < startOfTodayUTC) return helpers.message('"preferred_date" must not be in the past');
+    return value;
+  }, 'not in the past').required(),
   preferred_time: Joi.string().required(),
   message: Joi.string().max(1000).allow('', null),
 });
