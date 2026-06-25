@@ -78,101 +78,6 @@ function GridBg() {
   );
 }
 
-/* ─── Floating contract card ─────────────────────────────────────── */
-function FloatingContractCard() {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 60, rotateX: 15 }}
-      animate={{ opacity: 1, y: 0, rotateX: 0 }}
-      transition={{ duration: 1, delay: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-      style={{ perspective: 1000 }}
-      className="relative max-w-sm mx-auto"
-    >
-      <motion.div
-        animate={{ y: [0, -10, 0] }}
-        transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-        className="relative"
-      >
-        {/* Glow behind card */}
-        <div className="absolute inset-0 rounded-2xl blur-2xl opacity-40"
-          style={{ background: 'linear-gradient(135deg, #0D6E63, #C9A84C)' }} />
-
-        {/* Card */}
-        <div className="relative rounded-2xl border border-white/10 overflow-hidden"
-          style={{ background: 'rgba(15, 23, 30, 0.85)', backdropFilter: 'blur(20px)' }}>
-
-          {/* Card header */}
-          <div className="px-5 py-4 border-b border-white/5 flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <div className="w-2.5 h-2.5 rounded-full bg-teal-400" />
-              <span className="text-white/60 text-xs font-mono">AQD-000001</span>
-            </div>
-            <span className="text-xs px-2 py-0.5 rounded-full font-semibold"
-              style={{ background: 'rgba(13,110,99,0.3)', color: '#4ade80' }}>
-              ✓ Signed
-            </span>
-          </div>
-
-          {/* Card body */}
-          <div className="px-5 py-4 space-y-3">
-            <div className="flex justify-between items-start">
-              <div>
-                <p className="text-white/40 text-xs mb-0.5">Vehicle</p>
-                <p className="text-white font-semibold text-sm">2022 Toyota Camry XLE</p>
-              </div>
-              <div className="text-right">
-                <p className="text-white/40 text-xs mb-0.5">Type</p>
-                <p className="text-teal-400 font-semibold text-sm">Murabaha</p>
-              </div>
-            </div>
-
-            <div className="h-px bg-white/5" />
-
-            <div className="grid grid-cols-2 gap-3">
-              {[
-                { label: 'Financed', value: '$18,500' },
-                { label: 'Monthly', value: '$412' },
-                { label: 'Markup', value: '8%' },
-                { label: 'Term', value: '48 mo' },
-              ].map(({ label, value }) => (
-                <div key={label}>
-                  <p className="text-white/30 text-xs">{label}</p>
-                  <p className="text-white font-semibold text-sm">{value}</p>
-                </div>
-              ))}
-            </div>
-
-            <div className="h-px bg-white/5" />
-
-            {/* Signature row */}
-            <div className="flex gap-3">
-              {['Seller', 'Buyer'].map((role) => (
-                <div key={role} className="flex-1 flex items-center gap-2 px-3 py-2 rounded-lg"
-                  style={{ background: 'rgba(13,110,99,0.15)' }}>
-                  <div className="w-4 h-4 rounded-full bg-teal-500 flex items-center justify-center">
-                    <svg className="w-2.5 h-2.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <span className="text-white/70 text-xs">{role}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Shimmer effect */}
-          <motion.div
-            animate={{ x: ['-100%', '200%'] }}
-            transition={{ duration: 3, repeat: Infinity, repeatDelay: 4, ease: 'easeInOut' }}
-            className="absolute inset-0 pointer-events-none"
-            style={{ background: 'linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.04) 50%, transparent 60%)' }}
-          />
-        </div>
-      </motion.div>
-    </motion.div>
-  );
-}
-
 /* ─── Mini deal card ─────────────────────────────────────────────── */
 function MiniDealCard({ id, vehicle, type, amount, monthly, term, color }) {
   return (
@@ -873,8 +778,6 @@ export default function Home() {
               </Link>
             </motion.div>
           </motion.div>
-
-          <FloatingContractCard />
         </div>
 
         {/* Bottom fade */}
