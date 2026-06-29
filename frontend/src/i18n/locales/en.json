@@ -1,0 +1,236 @@
+{
+  "nav": {
+    "marketplace": "Marketplace",
+    "howItWorks": "How It Works",
+    "pricing": "Pricing",
+    "about": "About",
+    "faq": "FAQ",
+    "bookDemo": "📅 Book a Demo",
+    "login": "Log in",
+    "getStarted": "Get Started Free",
+    "getStartedShort": "Get Started →",
+    "dashboard": "Dashboard",
+    "contracts": "Contracts",
+    "myListings": "My Listings",
+    "messages": "Messages",
+    "admin": "Admin",
+    "newContract": "+ New Contract",
+    "settings": "Settings",
+    "signOut": "Sign out"
+  },
+  "footer": {
+    "tagline": "Shariah-compliant vehicle financing contracts for Muslim buyers and sellers in the United States.",
+    "product": "Product",
+    "company": "Company",
+    "legal": "Legal",
+    "contact": "Contact",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "disclaimerLabel": "Shariah Compliance Disclaimer:",
+    "disclaimer": "AqadChain provides tools for structuring vehicle sales as Murabaha or Musawama agreements. This platform does not provide legal or religious advice. Users are responsible for ensuring compliance with applicable laws and consulting qualified Shariah advisors. Contracts are governed by California state law.",
+    "rights": "All rights reserved."
+  },
+  "login": {
+    "redirecting": "Redirecting to login…"
+  },
+  "demo": {
+    "title": "📅 Book a Live Demo",
+    "titleDone": "Demo Booked!",
+    "intro": "Pick a date and time, and we'll walk you through AqadChain live.",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "company": "Company",
+    "preferredDate": "Preferred Date",
+    "preferredTime": "Preferred Time",
+    "selectTime": "Select a time",
+    "message": "Anything you'd like us to cover?",
+    "confirm": "Confirm Demo Session",
+    "joinMeet": "🎥 Join Google Meet",
+    "done": "Done",
+    "successTitle": "You're all set, {{name}}!",
+    "successBody": "We'll see you on {{date}} at {{time}}. A confirmation has been sent to {{email}}."
+  },
+  "home": {
+    "badge": "Shariah-Compliant · Legally Binding · California Law",
+    "headlinePrefix": "Halal vehicle",
+    "headlineHighlight": "financing",
+    "headlineSuffix": "contracts in minutes",
+    "ctaStart": "Get started free →",
+    "ctaHowItWorks": "See how it works",
+    "marketplaceTeaserBadge": "🔥 New · Marketplace is live",
+    "marketplaceTeaserText": "Browse halal-financed vehicles for sale →",
+    "recentlySigned": "Recently signed on AqadChain",
+    "slogans": [
+      { "line": "Halal contracts. No compromise.", "sub": "Shariah-compliant from start to finish." },
+      { "line": "No Riba. No hidden fees.", "sub": "Fixed markup agreed upfront — nothing changes." },
+      { "line": "Signed in minutes. Legally binding.", "sub": "DocuSign e-signatures built right in." },
+      { "line": "Murabaha. Musawama. Ijarah.", "sub": "Every Islamic finance structure covered." },
+      { "line": "Late fees go to charity — not the seller.", "sub": "Accountability without interest." },
+      { "line": "California law. AAOIFI standards.", "sub": "Enforceable and Shariah-certified." }
+    ],
+    "stats": {
+      "volume": "Contract volume financed",
+      "contracts": "Signed halal contracts",
+      "satisfaction": "Customer satisfaction",
+      "states": "Served across the US"
+    },
+    "trustItems": [
+      "✦ Shariah-Compliant",
+      "✦ Legally Binding",
+      "✦ DocuSign E-Signatures",
+      "✦ California Law",
+      "✦ Murabaha, Musawama & Ijarah",
+      "✦ No Riba",
+      "✦ AAOIFI Standards",
+      "✦ Encrypted & Secure"
+    ],
+    "howItWorks": {
+      "label": "How it works",
+      "title": "Three steps to a",
+      "titleLine2": "signed Halal contract",
+      "steps": [
+        { "title": "Create your contract", "description": "Enter vehicle details, parties, and deal terms in a guided flow. Our live calculator shows payment amounts in real time." },
+        { "title": "Sign electronically", "description": "Both parties receive DocuSign links by email. Sign from any device — phone, tablet, or desktop. No printing needed." },
+        { "title": "Done — it's binding", "description": "The signed PDF is securely stored and emailed to both parties. Your Halal financing agreement is legally complete." }
+      ]
+    },
+    "contractTypes": {
+      "label": "Contract types",
+      "title": "Three structures.",
+      "titleLine2": "All Shariah-compliant.",
+      "subtitle": "Choose the structure that fits your deal — sale or lease, cost-disclosed or negotiated.",
+      "murabaha": {
+        "title": "Murabaha", "subtitle": "Cost-Plus Financing",
+        "description": "The seller discloses their purchase cost and agrees on a fixed profit margin. The most transparent and widely used Islamic finance structure.",
+        "points": ["Seller cost fully disclosed", "Agreed markup percentage", "Fixed installment schedule", "Maximum 25% markup"]
+      },
+      "musawama": {
+        "title": "Musawama", "subtitle": "Negotiated Price Sale",
+        "description": "Both parties negotiate a final price — no cost disclosure required. Equally Shariah-compliant. More privacy for the seller.",
+        "points": ["No cost disclosure needed", "Negotiated selling price", "Same payment structure", "Flexible for both parties"]
+      },
+      "ijarah": {
+        "title": "Ijarah", "subtitle": "Islamic Lease", "badge": "New",
+        "description": "The lessor owns the vehicle and leases it to the lessee. Rental payments cover usufruct only. Optionally ends with ownership transfer (IMIT).",
+        "points": ["Lessor retains ownership", "Periodic rental (Ujrah)", "Optional buy-out (IMIT)", "AAOIFI Standard No. 9"]
+      }
+    },
+    "lateFee": {
+      "title": "Late fees without Riba",
+      "body1": "If a payment is more than 30 days late, a fixed daily fee applies — but <0>the seller does not keep it</0>. It goes to a charity both parties agree on at signing.",
+      "body2": "This creates real accountability without the seller profiting from tardiness, which would constitute Riba. Common choices include Islamic Relief USA, Zakat Foundation, or a local masjid."
+    },
+    "pricingTeaser": {
+      "label": "Pricing",
+      "title": "Built for every scale",
+      "subtitle": "Contracts live in-platform. Access is always controlled. Cancel anytime."
+    },
+    "asSeenIn": "As seen in",
+    "charityHeader": "Late fees go to charity — choose from our partners"
+  },
+  "pricing": {
+    "title": "Transparent pricing",
+    "subtitle": "No per-contract fees. No surprises. Cancel anytime.",
+    "mostPopular": "Most Popular",
+    "getStarted": "Get started",
+    "faqTitle": "Pricing FAQ",
+    "plans": {
+      "individual": {
+        "name": "Individual", "description": "For individual buyers and sellers doing occasional Halal financing deals.",
+        "features": ["Up to 5 active contracts", "Murabaha & Musawama contracts", "DocuSign e-signatures", "PDF download of signed contract", "Email notifications", "VIN lookup & decode", "NHTSA recall check", "Admin dashboard", "Team members", "Priority support"]
+      },
+      "business": {
+        "name": "Business", "description": "For dealerships, brokers, and high-volume sellers.",
+        "features": ["Unlimited active contracts", "Murabaha & Musawama contracts", "DocuSign e-signatures", "PDF download of signed contract", "Email notifications", "VIN lookup & decode", "NHTSA recall check", "Admin dashboard", "Team members (coming soon)", "Priority support"]
+      }
+    },
+    "faq": [
+      { "question": "Is there a free trial?", "answer": "You can create an account and start a contract for free. A subscription is required to send contracts for signature." },
+      { "question": "Can I cancel anytime?", "answer": "Yes. Cancel your subscription anytime from your account settings. You will retain access until the end of the billing period." },
+      { "question": "Are there per-contract fees?", "answer": "No — your subscription covers unlimited access for your plan tier. No surprise fees per document." },
+      { "question": "What payment methods do you accept?", "answer": "We accept all major credit and debit cards via Stripe. ACH bank transfers are available on request for Business plans." }
+    ]
+  },
+  "howItWorks": {
+    "heroTitle": "How AqadChain Works",
+    "heroSubtitle": "A step-by-step guide to creating your Halal vehicle financing contract.",
+    "steps": [
+      { "title": "Create an account", "body": "Sign up with Google or your email. Account creation takes under a minute. After signup, a short onboarding flow explains how the platform works." },
+      { "title": "Choose your contract type", "body": "Select Murabaha (cost-plus, cost disclosed to buyer) or Musawama (negotiated price, no cost disclosure required). Both are valid Shariah-compliant structures." },
+      { "title": "Enter vehicle details", "body": "Type in the VIN and we'll auto-fill the year, make, model, and trim using the free NHTSA public database. We also check for any active safety recalls and show you a warning badge." },
+      { "title": "Add buyer and seller information", "body": "Enter names, emails, phone numbers, and addresses for both parties. If you're the seller, your account details can be auto-filled." },
+      { "title": "Set deal terms", "body": "Enter the car price, down payment, markup percentage (capped at 25%), financing term, and payment frequency. A live calculator shows the monthly payment and total payable amount as you type." },
+      { "title": "Review the contract", "body": "Preview the full contract document before sending — including the payment schedule, all clauses, and your signature blocks. Make any edits needed." },
+      { "title": "Send for e-signatures", "body": "With one click, both parties receive a DocuSign link by email. They can sign from any device — no printing, scanning, or in-person meeting required." },
+      { "title": "Signed and done", "body": "Once both parties sign, the completed PDF is securely stored and accessible from your dashboard. You'll receive a confirmation email with a link to download." }
+    ],
+    "typesTitle": "Contract types explained",
+    "murabahaTitle": "Murabaha",
+    "murabahaBody1": "In a Murabaha transaction, the seller discloses their actual purchase price and the buyer agrees to a fixed markup above that price. The final selling price is the cost plus the agreed markup.",
+    "murabahaExample": "<0>Example:</0> Seller purchased a car for $20,000. They agree on a 10% markup ($2,000). The buyer pays $22,000 total — typically in monthly installments over 24–60 months.",
+    "musawamaTitle": "Musawama",
+    "musawamaBody1": "Musawama is a general sale where both parties negotiate and agree on a price without the seller being required to disclose their cost. It's the same end result, but without mandatory cost transparency.",
+    "musawamaExample": "<0>Example:</0> A buyer and seller agree the car is worth $22,000. No cost disclosure is required. Buyer pays in installments. Equally valid under Islamic finance principles.",
+    "lateFeeTitle": "The charitable late fee",
+    "lateFeeBody1": "Traditional interest on late payments is Riba (forbidden in Islam). AqadChain handles this through a <0>charitable penalty</0>: if a buyer is more than 30 days late on a payment, a fixed daily fee applies.",
+    "lateFeeBody2": "Critically, <0>the seller does not keep this fee as income</0>. It is donated to a charity that both parties agree on at the time of signing. This creates accountability (late fees are real consequences) without the seller profiting from tardiness.",
+    "lateFeeBody3": "The charity is chosen during contract creation and written into the contract. Common choices include local mosques, Islamic Relief, Zakat Foundation, or any 501(c)(3) of the parties' choice.",
+    "disclaimerLabel": "Shariah Compliance Disclaimer:",
+    "disclaimer": "AqadChain provides software tools only and does not issue fatwas or Shariah certifications. The contract structures are inspired by AAOIFI standards but have not been certified by a Shariah board. Users are encouraged to consult a qualified Shariah advisor before entering into any transaction. Contracts are legally governed by California state law.",
+    "ctaTitle": "Ready to get started?",
+    "ctaSubtitle": "Create your first Halal vehicle financing contract in minutes.",
+    "ctaButton": "Create a free account"
+  },
+  "about": {
+    "title": "About AqadChain",
+    "subtitle": "Making Halal vehicle financing accessible to every Muslim in America.",
+    "missionTitle": "Our Mission",
+    "mission1": "Muslim Americans who want to finance vehicle purchases without Riba (interest) have historically had few options. Traditional auto loans involve interest — forbidden under Islamic law. Community-based arrangements exist but often lack legal structure, leaving both buyer and seller exposed.",
+    "mission2": "AqadChain was built to solve this. We provide the tools to create legally binding, Shariah-inspired vehicle financing contracts between individuals — with professional e-signatures, secure storage, and a guided experience that takes minutes, not days.",
+    "approachTitle": "Our Approach to Shariah Compliance",
+    "approach1": "We take a practical, transparent approach. Our contracts are modeled on the Murabaha and Musawama structures described in AAOIFI Shari'ah Standards — the most widely referenced Islamic finance standards globally.",
+    "approach2": "We are upfront that AqadChain is a software platform, not a Shariah certification body. We do not issue fatwas. We provide a legally enforceable contract framework inspired by Islamic finance principles, and we encourage users to consult a qualified Shariah advisor before entering any transaction.",
+    "advisorTitle": "Shariah Advisor",
+    "advisorBody": "Shariah advisor partnerships are being established. This section will be updated once our advisory board is finalized.",
+    "bayAreaTitle": "Starting in the Bay Area",
+    "bayAreaBody": "We launched AqadChain in the San Francisco Bay Area — home to one of the largest and most diverse Muslim communities in the United States. Our contracts are structured under California law and designed for private-party vehicle sales within the US.",
+    "contactTitle": "Contact",
+    "contactBody": "Questions, feedback, or partnership inquiries:"
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Everything you need to know about AqadChain and Halal vehicle financing.",
+    "stillHaveQuestions": "Still have questions?",
+    "contactUs": "Contact us at support@aqadchain.com",
+    "sections": [
+      {
+        "category": "About Halal Financing",
+        "items": [
+          { "question": "What makes a car financing contract Halal?", "answer": "A Halal (permissible) financing contract avoids Riba (interest). Instead of a loan with interest, the seller and buyer agree on a sale price with a fixed markup. The buyer pays in installments. The profit comes from a genuine sale, not from lending money." },
+          { "question": "What is Murabaha?", "answer": "Murabaha is a cost-plus sale structure where the seller discloses their actual purchase cost and agrees on a fixed profit margin with the buyer. The buyer pays the total (cost + markup) in deferred installments. No interest is charged." },
+          { "question": "What is Musawama?", "answer": "Musawama is a negotiated-price sale where both parties agree on a final price without the seller disclosing their cost. It is equally Shariah-compliant — cost disclosure is optional under Musawama." },
+          { "question": "Is a markup the same as interest?", "answer": "No. In Islamic finance, the key distinction is that profit comes from a genuine commercial transaction (buying and selling a tangible asset) rather than from lending money over time. The markup is agreed upon upfront and fixed — it does not grow if the buyer is late (unlike interest). Late fees are donated to charity, not kept as income." }
+        ]
+      },
+      {
+        "category": "Using AqadChain",
+        "items": [
+          { "question": "Do I need a lawyer to use AqadChain?", "answer": "No. AqadChain generates a complete, legally structured contract automatically. You do not need to hire a lawyer to create or sign a contract on our platform. However, for large transactions, legal counsel is always a prudent choice." },
+          { "question": "How does e-signing work?", "answer": "After you create a contract, both parties receive an email from DocuSign — the industry-leading e-signature provider. They click the link, review the contract, and sign electronically. Signatures are legally binding under the ESIGN Act." },
+          { "question": "Can both parties sign from their phones?", "answer": "Yes. DocuSign works on any device — phone, tablet, or desktop. No app download is required." },
+          { "question": "What happens after both parties sign?", "answer": "The signed PDF is securely stored and emailed to both parties. It is also accessible from your AqadChain dashboard for download at any time." }
+        ]
+      },
+      {
+        "category": "Contracts and Compliance",
+        "items": [
+          { "question": "Is this legally enforceable in California?", "answer": "Yes. AqadChain contracts are structured as standard deferred-payment sale agreements governed by California law. They include all legally required clauses for secured vehicle sales and are executed via compliant e-signatures." },
+          { "question": "Does AqadChain provide Shariah certification?", "answer": "No. AqadChain is a software platform that provides contract templates inspired by AAOIFI Islamic finance standards. We do not issue fatwas or Shariah certifications. Users should consult a qualified Shariah advisor for religious guidance." },
+          { "question": "What is the maximum markup percentage?", "answer": "AqadChain caps markup at 25% to prevent predatory terms. This is a platform-level safeguard — parties may agree on any lower markup." },
+          { "question": "How does the late fee work without charging interest?", "answer": "If a payment is more than 30 days late, a fixed daily fee applies — but the seller does not keep this fee. It is donated to a charity both parties agreed on at signing. This creates accountability without the seller profiting from tardiness (which would resemble Riba)." }
+        ]
+      }
+    ]
+  }
+}

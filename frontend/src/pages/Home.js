@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform, useInView, AnimatePresence } from 'framer-motion';
+import { useTranslation, Trans } from 'react-i18next';
 import { PublicNavbar } from '../components/Navbar';
 import Footer from '../components/Footer';
 
@@ -144,21 +145,14 @@ function DealTicker() {
 }
 
 /* ─── Rotating slogan ────────────────────────────────────────────── */
-const slogans = [
-  { line: 'Halal contracts. No compromise.', sub: 'Shariah-compliant from start to finish.' },
-  { line: 'No Riba. No hidden fees.', sub: 'Fixed markup agreed upfront — nothing changes.' },
-  { line: 'Signed in minutes. Legally binding.', sub: 'DocuSign e-signatures built right in.' },
-  { line: 'Murabaha. Musawama. Ijarah.', sub: 'Every Islamic finance structure covered.' },
-  { line: 'Late fees go to charity — not the seller.', sub: 'Accountability without interest.' },
-  { line: 'California law. AAOIFI standards.', sub: 'Enforceable and Shariah-certified.' },
-];
-
 function RotatingSlogan() {
+  const { t } = useTranslation();
+  const slogans = t('home.slogans', { returnObjects: true });
   const [i, setI] = useState(0);
   useEffect(() => {
-    const t = setInterval(() => setI(x => (x + 1) % slogans.length), 3500);
-    return () => clearInterval(t);
-  }, []);
+    const timer = setInterval(() => setI(x => (x + 1) % slogans.length), 3500);
+    return () => clearInterval(timer);
+  }, [slogans.length]);
   return (
     <div className="h-20 flex flex-col items-center justify-center overflow-hidden">
       <AnimatePresence mode="wait">
@@ -233,18 +227,9 @@ const charityItems = [
 ];
 
 /* ─── Scrolling trust ticker ─────────────────────────────────────── */
-const trustItems = [
-  '✦ Shariah-Compliant',
-  '✦ Legally Binding',
-  '✦ DocuSign E-Signatures',
-  '✦ California Law',
-  '✦ Murabaha, Musawama & Ijarah',
-  '✦ No Riba',
-  '✦ AAOIFI Standards',
-  '✦ Encrypted & Secure',
-];
-
 function TrustTicker() {
+  const { t } = useTranslation();
+  const trustItems = t('home.trustItems', { returnObjects: true });
   const doubled = [...trustItems, ...trustItems];
   return (
     <div className="overflow-hidden py-4 border-y border-white/5"
@@ -720,6 +705,7 @@ const faqItems = [
 ];
 
 export default function Home() {
+  const { t } = useTranslation();
   const { loginWithRedirect } = useAuth0();
   const { scrollYProgress } = useScroll();
   const navbarOpacity = useTransform(scrollYProgress, [0, 0.05], [0, 1]);
@@ -750,7 +736,7 @@ export default function Home() {
             style={{ background: 'rgba(13,110,99,0.15)', borderColor: 'rgba(13,110,99,0.4)', color: '#4ade80' }}
           >
             <span className="w-1.5 h-1.5 rounded-full bg-teal-400 animate-pulse" />
-            Shariah-Compliant · Legally Binding · California Law
+            {t('home.badge')}
           </motion.div>
 
           {/* Main headline */}
@@ -760,15 +746,15 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="text-5xl md:text-7xl font-extrabold font-heading leading-[1.05] mb-6"
           >
-            Halal vehicle{' '}
+            {t('home.headlinePrefix')}{' '}
             <span style={{
               backgroundImage: 'linear-gradient(135deg, #0D6E63 0%, #4ade80 40%, #C9A84C 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
             }}>
-              financing
+              {t('home.headlineHighlight')}
             </span>
-            <br />contracts in minutes
+            <br />{t('home.headlineSuffix')}
           </motion.h1>
 
           {/* Rotating slogan */}
@@ -795,13 +781,13 @@ export default function Home() {
               className="px-8 py-4 rounded-xl font-bold text-base text-white"
               style={{ background: 'linear-gradient(135deg, #0D6E63, #0a5248)', boxShadow: '0 0 24px rgba(13,110,99,0.4)' }}
             >
-              Get started free →
+              {t('home.ctaStart')}
             </motion.button>
             <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
               <Link to="/how-it-works"
                 className="px-8 py-4 rounded-xl font-semibold text-base text-white/70 border border-white/10 hover:border-white/20 hover:text-white transition-colors block"
                 style={{ backdropFilter: 'blur(10px)', background: 'rgba(255,255,255,0.04)' }}>
-                See how it works
+                {t('home.ctaHowItWorks')}
               </Link>
             </motion.div>
           </motion.div>
@@ -818,10 +804,10 @@ export default function Home() {
           <div className="flex flex-col items-center pt-6 pb-1">
             <span className="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-2"
               style={{ background: 'rgba(201,168,76,0.18)', color: '#C9A84C', border: '1px solid rgba(201,168,76,0.3)' }}>
-              🔥 New · Marketplace is live
+              {t('home.marketplaceTeaserBadge')}
             </span>
             <p className="text-center text-white/60 text-sm font-semibold group-hover:text-white transition-colors">
-              Browse halal-financed vehicles for sale →
+              {t('home.marketplaceTeaserText')}
             </p>
           </div>
         </Link>
@@ -834,10 +820,10 @@ export default function Home() {
       {/* ── STATS ────────────────────────────────────────────────── */}
       <section className="py-16 px-4 border-b border-white/5">
         <div className="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
-          <StatCounter end={2400000} prefix="$" suffix="+" label="Contract volume financed" />
-          <StatCounter end={430} suffix="+" label="Signed halal contracts" />
-          <StatCounter end={98.4} suffix="%" label="Customer satisfaction" decimals={1} />
-          <StatCounter end={14} suffix=" states" label="Served across the US" />
+          <StatCounter end={2400000} prefix="$" suffix="+" label={t('home.stats.volume')} />
+          <StatCounter end={430} suffix="+" label={t('home.stats.contracts')} />
+          <StatCounter end={98.4} suffix="%" label={t('home.stats.satisfaction')} decimals={1} />
+          <StatCounter end={14} suffix=" states" label={t('home.stats.states')} />
         </div>
       </section>
 
@@ -847,19 +833,15 @@ export default function Home() {
           style={{ background: 'radial-gradient(ellipse at 50% 50%, rgba(13,110,99,0.06) 0%, transparent 70%)' }} />
         <div className="max-w-5xl mx-auto relative">
           <FadeUp className="text-center mb-16">
-            <p className="text-teal-400 text-sm font-semibold uppercase tracking-widest mb-3">How it works</p>
+            <p className="text-teal-400 text-sm font-semibold uppercase tracking-widest mb-3">{t('home.howItWorks.label')}</p>
             <h2 className="text-4xl md:text-5xl font-extrabold font-heading text-white">
-              Three steps to a<br />signed Halal contract
+              {t('home.howItWorks.title')}<br />{t('home.howItWorks.titleLine2')}
             </h2>
           </FadeUp>
 
           <div className="grid md:grid-cols-3 gap-5">
-            {[
-              { number: '01', title: 'Create your contract', description: 'Enter vehicle details, parties, and deal terms in a guided flow. Our live calculator shows payment amounts in real time.' },
-              { number: '02', title: 'Sign electronically', description: 'Both parties receive DocuSign links by email. Sign from any device — phone, tablet, or desktop. No printing needed.' },
-              { number: '03', title: 'Done — it\'s binding', description: 'The signed PDF is securely stored and emailed to both parties. Your Halal financing agreement is legally complete.' },
-            ].map((step, i) => (
-              <StepCard key={step.number} {...step} delay={i * 0.15} />
+            {t('home.howItWorks.steps', { returnObjects: true }).map((step, i) => (
+              <StepCard key={step.title} number={String(i + 1).padStart(2, '0')} title={step.title} description={step.description} delay={i * 0.15} />
             ))}
           </div>
         </div>
@@ -869,28 +851,28 @@ export default function Home() {
       <section className="py-24 px-4">
         <div className="max-w-5xl mx-auto">
           <FadeUp className="text-center mb-16">
-            <p className="text-gold-400 text-sm font-semibold uppercase tracking-widest mb-3" style={{ color: '#C9A84C' }}>Contract types</p>
+            <p className="text-gold-400 text-sm font-semibold uppercase tracking-widest mb-3" style={{ color: '#C9A84C' }}>{t('home.contractTypes.label')}</p>
             <h2 className="text-4xl md:text-5xl font-extrabold font-heading text-white">
-              Three structures.<br />All Shariah-compliant.
+              {t('home.contractTypes.title')}<br />{t('home.contractTypes.titleLine2')}
             </h2>
-            <p className="text-white/40 mt-4 max-w-xl mx-auto">Choose the structure that fits your deal — sale or lease, cost-disclosed or negotiated.</p>
+            <p className="text-white/40 mt-4 max-w-xl mx-auto">{t('home.contractTypes.subtitle')}</p>
           </FadeUp>
           <div className="grid md:grid-cols-3 gap-5">
             <ContractCard
-              title="Murabaha" subtitle="Cost-Plus Financing" isHighlight delay={0.1}
-              description="The seller discloses their purchase cost and agrees on a fixed profit margin. The most transparent and widely used Islamic finance structure."
-              points={['Seller cost fully disclosed', 'Agreed markup percentage', 'Fixed installment schedule', 'Maximum 25% markup']}
+              title={t('home.contractTypes.murabaha.title')} subtitle={t('home.contractTypes.murabaha.subtitle')} isHighlight delay={0.1}
+              description={t('home.contractTypes.murabaha.description')}
+              points={t('home.contractTypes.murabaha.points', { returnObjects: true })}
             />
             <ContractCard
-              title="Musawama" subtitle="Negotiated Price Sale" isHighlight={false} delay={0.2}
-              description="Both parties negotiate a final price — no cost disclosure required. Equally Shariah-compliant. More privacy for the seller."
-              points={['No cost disclosure needed', 'Negotiated selling price', 'Same payment structure', 'Flexible for both parties']}
+              title={t('home.contractTypes.musawama.title')} subtitle={t('home.contractTypes.musawama.subtitle')} isHighlight={false} delay={0.2}
+              description={t('home.contractTypes.musawama.description')}
+              points={t('home.contractTypes.musawama.points', { returnObjects: true })}
             />
             <ContractCard
-              title="Ijarah" subtitle="Islamic Lease" isHighlight={false} delay={0.3}
-              badge="New"
-              description="The lessor owns the vehicle and leases it to the lessee. Rental payments cover usufruct only. Optionally ends with ownership transfer (IMIT)."
-              points={['Lessor retains ownership', 'Periodic rental (Ujrah)', 'Optional buy-out (IMIT)', 'AAOIFI Standard No. 9']}
+              title={t('home.contractTypes.ijarah.title')} subtitle={t('home.contractTypes.ijarah.subtitle')} isHighlight={false} delay={0.3}
+              badge={t('home.contractTypes.ijarah.badge')}
+              description={t('home.contractTypes.ijarah.description')}
+              points={t('home.contractTypes.ijarah.points', { returnObjects: true })}
             />
           </div>
         </div>
@@ -909,13 +891,13 @@ export default function Home() {
                 style={{ background: 'linear-gradient(90deg, transparent, rgba(201,168,76,0.5), transparent)' }} />
               <div className="text-4xl mb-6">🕌</div>
               <h3 className="text-2xl md:text-3xl font-bold font-heading text-white mb-4">
-                Late fees without Riba
+                {t('home.lateFee.title')}
               </h3>
               <p className="text-white/50 leading-relaxed mb-4">
-                If a payment is more than 30 days late, a fixed daily fee applies — but <strong className="text-white/80">the seller does not keep it</strong>. It goes to a charity both parties agree on at signing.
+                <Trans i18nKey="home.lateFee.body1" components={[<strong key="0" className="text-white/80" />]} />
               </p>
               <p className="text-white/50 leading-relaxed">
-                This creates real accountability without the seller profiting from tardiness, which would constitute Riba. Common choices include Islamic Relief USA, Zakat Foundation, or a local masjid.
+                {t('home.lateFee.body2')}
               </p>
             </div>
           </FadeIn>
@@ -926,9 +908,9 @@ export default function Home() {
       <section className="py-24 px-4">
         <div className="max-w-5xl mx-auto">
           <FadeUp className="text-center mb-16">
-            <p className="text-teal-400 text-sm font-semibold uppercase tracking-widest mb-3">Pricing</p>
-            <h2 className="text-4xl md:text-5xl font-extrabold font-heading text-white">Built for every scale</h2>
-            <p className="text-white/40 mt-3">Contracts live in-platform. Access is always controlled. Cancel anytime.</p>
+            <p className="text-teal-400 text-sm font-semibold uppercase tracking-widest mb-3">{t('home.pricingTeaser.label')}</p>
+            <h2 className="text-4xl md:text-5xl font-extrabold font-heading text-white">{t('home.pricingTeaser.title')}</h2>
+            <p className="text-white/40 mt-3">{t('home.pricingTeaser.subtitle')}</p>
           </FadeUp>
 
           {/* Main tiers */}
@@ -1070,7 +1052,7 @@ export default function Home() {
 
       {/* ── FEATURED IN ──────────────────────────────────────────── */}
       <section className="py-14 border-t border-white/5 overflow-hidden">
-        <p className="text-center text-white/20 text-xs font-semibold uppercase tracking-widest mb-8 px-4">As seen in</p>
+        <p className="text-center text-white/20 text-xs font-semibold uppercase tracking-widest mb-8 px-4">{t('home.asSeenIn')}</p>
         <div className="overflow-hidden">
           <motion.div
             animate={{ x: ['0%', '-50%'] }}
@@ -1088,7 +1070,7 @@ export default function Home() {
 
       {/* ── CHARITY PARTNERS ─────────────────────────────────────── */}
       <section className="py-14 border-t border-white/5 overflow-hidden">
-        <p className="text-center text-white/20 text-xs font-semibold uppercase tracking-widest mb-8 px-4">Late fees go to charity — choose from our partners</p>
+        <p className="text-center text-white/20 text-xs font-semibold uppercase tracking-widest mb-8 px-4">{t('home.charityHeader')}</p>
         <div className="overflow-hidden">
           <motion.div
             animate={{ x: ['0%', '-50%'] }}

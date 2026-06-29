@@ -1,9 +1,11 @@
 import { useEffect } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import Spinner from '../components/Spinner';
 
 export default function Login() {
+  const { t } = useTranslation();
   const { loginWithRedirect, isAuthenticated, isLoading } = useAuth0();
   const navigate = useNavigate();
 
@@ -23,7 +25,7 @@ export default function Login() {
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="text-center">
         <Spinner size="lg" />
-        <p className="mt-4 text-gray-500 text-sm">Redirecting to login…</p>
+        <p className="mt-4 text-gray-500 text-sm">{t('login.redirecting')}</p>
       </div>
     </div>
   );

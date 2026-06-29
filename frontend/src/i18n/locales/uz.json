@@ -1,0 +1,236 @@
+{
+  "nav": {
+    "marketplace": "Bozor",
+    "howItWorks": "Qanday ishlaydi",
+    "pricing": "Narxlar",
+    "about": "Biz haqimizda",
+    "faq": "Savol-javob",
+    "bookDemo": "📅 Demo band qiling",
+    "login": "Kirish",
+    "getStarted": "Bepul boshlash",
+    "getStartedShort": "Boshlash →",
+    "dashboard": "Boshqaruv paneli",
+    "contracts": "Shartnomalar",
+    "myListings": "Mening e'lonlarim",
+    "messages": "Xabarlar",
+    "admin": "Admin",
+    "newContract": "+ Yangi shartnoma",
+    "settings": "Sozlamalar",
+    "signOut": "Chiqish"
+  },
+  "footer": {
+    "tagline": "AQSHdagi musulmon xaridorlar va sotuvchilar uchun Shariatga mos avtomobil moliyalashtirish shartnomalari.",
+    "product": "Mahsulot",
+    "company": "Kompaniya",
+    "legal": "Huquqiy",
+    "contact": "Aloqa",
+    "privacy": "Maxfiylik siyosati",
+    "terms": "Foydalanish shartlari",
+    "disclaimerLabel": "Shariatga muvofiqlik bo'yicha ogohlantirish:",
+    "disclaimer": "AqadChain avtomobil savdosini Murabaha yoki Musawama shartnomalari sifatida tuzish uchun vositalar taqdim etadi. Platforma huquqiy yoki diniy maslahat bermaydi. Foydalanuvchilar amaldagi qonunlarga rioya qilish va malakali Shariat maslahatchilari bilan maslahatlashish uchun javobgardir. Shartnomalar Kaliforniya shtati qonunlari bilan tartibga solinadi.",
+    "rights": "Barcha huquqlar himoyalangan."
+  },
+  "login": {
+    "redirecting": "Tizimga kirishga yo'naltirilmoqda…"
+  },
+  "demo": {
+    "title": "📅 Jonli demo band qiling",
+    "titleDone": "Demo band qilindi!",
+    "intro": "Sana va vaqtni tanlang, biz sizga AqadChain'ni jonli ko'rsatamiz.",
+    "name": "Ism",
+    "email": "Elektron pochta",
+    "phone": "Telefon",
+    "company": "Kompaniya",
+    "preferredDate": "Tanlangan sana",
+    "preferredTime": "Tanlangan vaqt",
+    "selectTime": "Vaqtni tanlang",
+    "message": "Biz nimani muhokama qilishimizni xohlaysiz?",
+    "confirm": "Demo seansini tasdiqlash",
+    "joinMeet": "🎥 Google Meet'ga qo'shilish",
+    "done": "Tayyor",
+    "successTitle": "Hammasi tayyor, {{name}}!",
+    "successBody": "Sizni {{date}} kuni soat {{time}}da kutamiz. Tasdiqlash xati {{email}} manziliga yuborildi."
+  },
+  "home": {
+    "badge": "Shariatga mos · Yuridik kuchga ega · Kaliforniya qonuni",
+    "headlinePrefix": "Halol avtomobil",
+    "headlineHighlight": "moliyalashtirish",
+    "headlineSuffix": "shartnomalari bir necha daqiqada",
+    "ctaStart": "Bepul boshlash →",
+    "ctaHowItWorks": "Qanday ishlashini ko'ring",
+    "marketplaceTeaserBadge": "🔥 Yangi · Bozor ishga tushdi",
+    "marketplaceTeaserText": "Sotuvdagi halol moliyalashtirilgan avtomobillarni ko'rib chiqing →",
+    "recentlySigned": "AqadChain'da yaqinda imzolangan",
+    "slogans": [
+      { "line": "Halol shartnomalar. Hech qanday murosa yo'q.", "sub": "Boshidan oxirigacha Shariatga mos." },
+      { "line": "Riba yo'q. Yashirin to'lovlar yo'q.", "sub": "Oldindan kelishilgan belgilangan ustama — hech narsa o'zgarmaydi." },
+      { "line": "Bir necha daqiqada imzolanadi. Yuridik kuchga ega.", "sub": "DocuSign elektron imzolari o'rnatilgan." },
+      { "line": "Murabaha. Musawama. Ijara.", "sub": "Har qanday Islom moliyasi tuzilmasi qamrab olingan." },
+      { "line": "Kechikish to'lovlari xayriyaga boradi — sotuvchiga emas.", "sub": "Foizsiz javobgarlik." },
+      { "line": "Kaliforniya qonuni. AAOIFI standartlari.", "sub": "Ijro etiladigan va Shariat tomonidan tasdiqlangan." }
+    ],
+    "stats": {
+      "volume": "Moliyalashtirilgan shartnomalar hajmi",
+      "contracts": "Imzolangan halol shartnomalar",
+      "satisfaction": "Mijozlar mamnunligi",
+      "states": "AQSh bo'ylab xizmat ko'rsatiladi"
+    },
+    "trustItems": [
+      "✦ Shariatga mos",
+      "✦ Yuridik kuchga ega",
+      "✦ DocuSign elektron imzolari",
+      "✦ Kaliforniya qonuni",
+      "✦ Murabaha, Musawama va Ijara",
+      "✦ Riba yo'q",
+      "✦ AAOIFI standartlari",
+      "✦ Shifrlangan va xavfsiz"
+    ],
+    "howItWorks": {
+      "label": "Qanday ishlaydi",
+      "title": "Imzolangan halol shartnomaga",
+      "titleLine2": "uch qadam",
+      "steps": [
+        { "title": "Shartnomangizni tuzing", "description": "Boshqariluvchi oqimda avtomobil ma'lumotlari, tomonlar va bitim shartlarini kiriting. Jonli kalkulyatorimiz to'lov miqdorlarini real vaqtda ko'rsatadi." },
+        { "title": "Elektron tarzda imzolang", "description": "Ikki tomon ham DocuSign havolalarini elektron pochta orqali oladi. Istalgan qurilmadan imzolang — telefon, planshet yoki kompyuter. Chop etish shart emas." },
+        { "title": "Tayyor — bu majburiy", "description": "Imzolangan PDF xavfsiz saqlanadi va ikki tomonga elektron pochta orqali yuboriladi. Halol moliyalashtirish shartnomangiz yuridik jihatdan to'liq tugallandi." }
+      ]
+    },
+    "contractTypes": {
+      "label": "Shartnoma turlari",
+      "title": "Uch tuzilma.",
+      "titleLine2": "Barchasi Shariatga mos.",
+      "subtitle": "Bitimingizga mos tuzilmani tanlang — savdo yoki ijara, xarajat oshkor qilingan yoki kelishilgan.",
+      "murabaha": {
+        "title": "Murabaha", "subtitle": "Xarajat ustiga foyda moliyalashtirish",
+        "description": "Sotuvchi sotib olish narxini oshkor qiladi va belgilangan foyda me'yoriga kelishadi. Eng shaffof va keng qo'llaniladigan Islom moliyasi tuzilmasi.",
+        "points": ["Sotuvchi xarajati to'liq oshkor qilinadi", "Kelishilgan ustama foizi", "Belgilangan to'lov jadvali", "Maksimum 25% ustama"]
+      },
+      "musawama": {
+        "title": "Musawama", "subtitle": "Kelishilgan narxda savdo",
+        "description": "Ikki tomon yakuniy narxni muzokara qiladi — xarajatni oshkor qilish shart emas. Bir xil darajada Shariatga mos. Sotuvchi uchun ko'proq maxfiylik.",
+        "points": ["Xarajatni oshkor qilish shart emas", "Kelishilgan sotuv narxi", "Bir xil to'lov tuzilmasi", "Ikki tomon uchun moslashuvchan"]
+      },
+      "ijarah": {
+        "title": "Ijara", "subtitle": "Islom ijarasi", "badge": "Yangi",
+        "description": "Ijaraga beruvchi avtomobilga egalik qiladi va uni ijaraga beradi. Ijara to'lovlari faqat foydalanish huquqini qamrab oladi. Ixtiyoriy ravishda egalik huquqi o'tkazilishi bilan tugaydi (IMIT).",
+        "points": ["Ijaraga beruvchi egalikni saqlab qoladi", "Davriy ijara to'lovi (Ujrah)", "Ixtiyoriy sotib olish (IMIT)", "AAOIFI 9-son standarti"]
+      }
+    },
+    "lateFee": {
+      "title": "Ribosiz kechikish to'lovlari",
+      "body1": "Agar to'lov 30 kundan ortiq kechiksa, belgilangan kunlik to'lov qo'llaniladi — ammo <0>sotuvchi uni o'ziga olmaydi</0>. U ikki tomon imzolash vaqtida kelishgan xayriya tashkilotiga boradi.",
+      "body2": "Bu sotuvchi kechikishdan foyda ko'rmasdan (bu Riboga teng bo'lardi) haqiqiy javobgarlikni yaratadi. Keng tarqalgan tanlovlar orasida Islamic Relief USA, Zakat Foundation yoki mahalliy masjid bor."
+    },
+    "pricingTeaser": {
+      "label": "Narxlar",
+      "title": "Har qanday miqyos uchun yaratilgan",
+      "subtitle": "Shartnomalar platforma ichida joylashgan. Kirish doimo nazorat qilinadi. Istalgan vaqtda bekor qilish mumkin."
+    },
+    "asSeenIn": "Bizni ko'rgan manbalar",
+    "charityHeader": "Kechikish to'lovlari xayriyaga boradi — hamkorlarimizdan birini tanlang"
+  },
+  "pricing": {
+    "title": "Shaffof narxlar",
+    "subtitle": "Shartnoma uchun alohida to'lov yo'q. Hech qanday kutilmagan narsa yo'q. Istalgan vaqtda bekor qiling.",
+    "mostPopular": "Eng mashhur",
+    "getStarted": "Boshlash",
+    "faqTitle": "Narxlar bo'yicha savol-javob",
+    "plans": {
+      "individual": {
+        "name": "Jismoniy shaxs", "description": "Vaqti-vaqti bilan halol moliyalashtirish bitimlarini amalga oshiruvchi xaridorlar va sotuvchilar uchun.",
+        "features": ["5 tagacha faol shartnoma", "Murabaha va Musawama shartnomalari", "DocuSign elektron imzolari", "Imzolangan shartnomani PDF formatida yuklab olish", "Elektron pochta bildirishnomalari", "VIN qidirish va dekodlash", "NHTSA chaqirib olish tekshiruvi", "Admin paneli", "Jamoa a'zolari", "Ustuvor qo'llab-quvvatlash"]
+      },
+      "business": {
+        "name": "Biznes", "description": "Avtosalonlar, brokerlar va yuqori hajmdagi sotuvchilar uchun.",
+        "features": ["Cheksiz faol shartnomalar", "Murabaha va Musawama shartnomalari", "DocuSign elektron imzolari", "Imzolangan shartnomani PDF formatida yuklab olish", "Elektron pochta bildirishnomalari", "VIN qidirish va dekodlash", "NHTSA chaqirib olish tekshiruvi", "Admin paneli", "Jamoa a'zolari (tez kunda)", "Ustuvor qo'llab-quvvatlash"]
+      }
+    },
+    "faq": [
+      { "question": "Bepul sinov muddati bormi?", "answer": "Siz hisob yaratishingiz va shartnomani bepul boshlashingiz mumkin. Shartnomani imzolash uchun yuborish uchun obuna talab qilinadi." },
+      { "question": "Istalgan vaqtda bekor qilsam bo'ladimi?", "answer": "Ha. Obunangizni hisob sozlamalaridan istalgan vaqtda bekor qiling. Hisob-kitob davri tugagunga qadar kirish huquqi saqlanib qoladi." },
+      { "question": "Har bir shartnoma uchun to'lov bormi?", "answer": "Yo'q — obunangiz reja darajangiz uchun cheksiz kirishni qamrab oladi. Har bir hujjat uchun kutilmagan to'lovlar yo'q." },
+      { "question": "Qaysi to'lov usullarini qabul qilasiz?", "answer": "Biz Stripe orqali barcha asosiy kredit va debet kartalarini qabul qilamiz. Biznes rejalar uchun ACH bank o'tkazmalari so'rov bo'yicha mavjud." }
+    ]
+  },
+  "howItWorks": {
+    "heroTitle": "AqadChain qanday ishlaydi",
+    "heroSubtitle": "Halol avtomobil moliyalashtirish shartnomangizni tuzish bo'yicha bosqichma-bosqich qo'llanma.",
+    "steps": [
+      { "title": "Hisob yarating", "body": "Google yoki elektron pochtangiz orqali ro'yxatdan o'ting. Hisob yaratish bir daqiqadan kam vaqt oladi. Ro'yxatdan o'tgandan so'ng, qisqa tanishtiruv oqimi platforma qanday ishlashini tushuntiradi." },
+      { "title": "Shartnoma turini tanlang", "body": "Murabaha (xarajat ustiga foyda, xarajat xaridorga oshkor qilinadi) yoki Musawama (kelishilgan narx, xarajatni oshkor qilish shart emas) ni tanlang. Ikkalasi ham haqiqiy Shariatga mos tuzilmalardir." },
+      { "title": "Avtomobil ma'lumotlarini kiriting", "body": "VIN raqamini kiriting va biz bepul NHTSA umumiy ma'lumotlar bazasi yordamida yil, marka, model va jihozlanishni avtomatik to'ldiramiz. Shuningdek, biz har qanday faol xavfsizlik chaqirib olishlarini tekshiramiz va sizga ogohlantirish nishonini ko'rsatamiz." },
+      { "title": "Xaridor va sotuvchi ma'lumotlarini qo'shing", "body": "Ikki tomon uchun ism, elektron pochta, telefon raqamlari va manzillarni kiriting. Agar siz sotuvchi bo'lsangiz, hisobingiz ma'lumotlari avtomatik to'ldirilishi mumkin." },
+      { "title": "Bitim shartlarini belgilang", "body": "Avtomobil narxi, boshlang'ich to'lov, ustama foizi (25% bilan chegaralangan), moliyalashtirish muddati va to'lov chastotasini kiriting. Jonli kalkulyator yozayotganingizda oylik to'lov va umumiy to'lanadigan summani ko'rsatadi." },
+      { "title": "Shartnomani ko'rib chiqing", "body": "Yuborishdan oldin to'liq shartnoma hujjatini ko'rib chiqing — to'lov jadvali, barcha bandlar va imzo bloklarini o'z ichiga olgan holda. Kerakli o'zgartirishlarni kiriting." },
+      { "title": "Elektron imzolar uchun yuboring", "body": "Bir bosishda ikki tomon ham elektron pochta orqali DocuSign havolasini oladi. Ular istalgan qurilmadan imzolashlari mumkin — chop etish, skanerlash yoki yuzma-yuz uchrashish shart emas." },
+      { "title": "Imzolandi va tayyor", "body": "Ikki tomon imzolagandan so'ng, to'liq PDF xavfsiz saqlanadi va boshqaruv panelingizdan kirish mumkin. Yuklab olish havolasi bilan tasdiqlash xatini olasiz." }
+    ],
+    "typesTitle": "Shartnoma turlari tushuntirilgan",
+    "murabahaTitle": "Murabaha",
+    "murabahaBody1": "Murabaha bitimida sotuvchi haqiqiy sotib olish narxini oshkor qiladi va xaridor bu narx ustiga belgilangan ustamaga rozi bo'ladi. Yakuniy sotuv narxi xarajat va kelishilgan ustama yig'indisidir.",
+    "murabahaExample": "<0>Misol:</0> Sotuvchi avtomobilni 20 000 dollarga sotib oldi. Ular 10% ustamaga (2 000 dollar) kelishadilar. Xaridor jami 22 000 dollar to'laydi — odatda 24-60 oy davomida oylik to'lovlar bilan.",
+    "musawamaTitle": "Musawama",
+    "musawamaBody1": "Musawama — ikki tomon sotuvchi xarajatini oshkor qilishi shart bo'lmagan holda narxni muzokara qilib kelishadigan umumiy savdo turidir. Yakuniy natija bir xil, ammo majburiy xarajat shaffofligi yo'q.",
+    "musawamaExample": "<0>Misol:</0> Xaridor va sotuvchi avtomobil 22 000 dollar turishiga kelishadilar. Xarajatni oshkor qilish shart emas. Xaridor bo'lib-bo'lib to'laydi. Islom moliyasi tamoyillariga ko'ra bir xil darajada haqiqiy.",
+    "lateFeeTitle": "Xayriya kechikish to'lovi",
+    "lateFeeBody1": "Kechikkan to'lovlar bo'yicha an'anaviy foiz — Riboe (Islomda taqiqlangan). AqadChain bu masalani <0>xayriya jazosi</0> orqali hal qiladi: agar xaridor to'lovni 30 kundan ortiq kechiksa, belgilangan kunlik to'lov qo'llaniladi.",
+    "lateFeeBody2": "Eng muhimi, <0>sotuvchi bu to'lovni daromad sifatida saqlamaydi</0>. U imzolash vaqtida ikki tomon kelishgan xayriya tashkilotiga beriladi. Bu sotuvchi kechikishdan foyda ko'rmasdan javobgarlikni yaratadi (kechikish to'lovlari haqiqiy oqibatlardir).",
+    "lateFeeBody3": "Xayriya tashkiloti shartnoma tuzilishi vaqtida tanlanadi va shartnomaga yoziladi. Keng tarqalgan tanlovlar orasida mahalliy masjidlar, Islamic Relief, Zakat Foundation yoki tomonlarning tanlovi bo'yicha boshqa 501(c)(3) tashkilotlari bor.",
+    "disclaimerLabel": "Shariatga muvofiqlik bo'yicha ogohlantirish:",
+    "disclaimer": "AqadChain faqat dasturiy vositalarni taqdim etadi va fatvo yoki Shariat sertifikatlarini bermaydi. Shartnoma tuzilmalari AAOIFI standartlaridan ilhomlangan, ammo Shariat kengashi tomonidan sertifikatlanmagan. Foydalanuvchilarga har qanday bitimga kirishdan oldin malakali Shariat maslahatchisi bilan maslahatlashish tavsiya etiladi. Shartnomalar Kaliforniya shtati qonunlari bilan yuridik jihatdan tartibga solinadi.",
+    "ctaTitle": "Boshlashga tayyormisiz?",
+    "ctaSubtitle": "Birinchi halol avtomobil moliyalashtirish shartnomangizni bir necha daqiqada yarating.",
+    "ctaButton": "Bepul hisob yaratish"
+  },
+  "about": {
+    "title": "AqadChain haqida",
+    "subtitle": "Halol avtomobil moliyalashtirishni Amerikadagi har bir musulmon uchun qulay qilish.",
+    "missionTitle": "Bizning vazifamiz",
+    "mission1": "Riboe (foiz) siz avtomobil sotib olishni moliyalashtirishni xohlaydigan amerikalik musulmonlarning tarixan kam imkoniyatlari bor edi. An'anaviy avtokreditlar foizni o'z ichiga oladi — Islom qonuniga ko'ra taqiqlangan. Jamoaviy kelishuvlar mavjud, ammo ko'pincha huquqiy tuzilmaga ega emas, bu xaridor va sotuvchini himoyasiz qoldiradi.",
+    "mission2": "AqadChain buni hal qilish uchun yaratilgan. Biz shaxslar orasida yuridik kuchga ega, Shariatdan ilhomlangan avtomobil moliyalashtirish shartnomalarini tuzish uchun vositalarni taqdim etamiz — professional elektron imzolar, xavfsiz saqlash va kunlar emas, daqiqalar talab qiladigan boshqariluvchi tajriba bilan.",
+    "approachTitle": "Shariatga muvofiqlikka yondashuvimiz",
+    "approach1": "Biz amaliy va shaffof yondashuvni qo'llaymiz. Shartnomalarimiz AAOIFI Shariat standartlarida tasvirlangan Murabaha va Musawama tuzilmalariga asoslangan — global miqyosda eng ko'p murojaat qilinadigan Islom moliyasi standartlari.",
+    "approach2": "Biz AqadChain dasturiy platforma ekanligini, Shariat sertifikatlash organi emasligini ochiq aytamiz. Biz fatvo bermaymiz. Biz Islom moliyasi tamoyillaridan ilhomlangan yuridik kuchga ega shartnoma tuzilmasini taqdim etamiz va foydalanuvchilarni har qanday bitimga kirishdan oldin malakali Shariat maslahatchisi bilan maslahatlashishga undaymiz.",
+    "advisorTitle": "Shariat maslahatchisi",
+    "advisorBody": "Shariat maslahatchisi bilan hamkorlik o'rnatilmoqda. Maslahat kengashimiz yakunlanganidan so'ng bu bo'lim yangilanadi.",
+    "bayAreaTitle": "San-Fransisko ko'rfazi hududidan boshlanish",
+    "bayAreaBody": "Biz AqadChain'ni AQShdagi eng katta va xilma-xil musulmon jamoalaridan biriga ega bo'lgan San-Fransisko ko'rfazi hududida ishga tushirdik. Shartnomalarimiz Kaliforniya qonuni asosida tuzilgan va AQSh ichidagi shaxsiy avtomobil savdolari uchun mo'ljallangan.",
+    "contactTitle": "Aloqa",
+    "contactBody": "Savollar, fikr-mulohazalar yoki hamkorlik so'rovlari uchun:"
+  },
+  "faq": {
+    "title": "Tez-tez so'raladigan savollar",
+    "subtitle": "AqadChain va halol avtomobil moliyalashtirish haqida bilishingiz kerak bo'lgan hamma narsa.",
+    "stillHaveQuestions": "Savollaringiz qoldimi?",
+    "contactUs": "Biz bilan bog'laning: support@aqadchain.com",
+    "sections": [
+      {
+        "category": "Halol moliyalashtirish haqida",
+        "items": [
+          { "question": "Avtomobil moliyalashtirish shartnomasini nima halol qiladi?", "answer": "Halol (ruxsat etilgan) moliyalashtirish shartnomasi Riboe (foiz)dan qochadi. Foizli kredit o'rniga, sotuvchi va xaridor belgilangan ustama bilan sotuv narxiga kelishadilar. Xaridor bo'lib-bo'lib to'laydi. Foyda haqiqiy savdodan, pul qarz berishdan emas, keladi." },
+          { "question": "Murabaha nima?", "answer": "Murabaha — sotuvchi haqiqiy sotib olish xarajatini oshkor qiladigan va xaridor bilan belgilangan foyda me'yoriga keladigan xarajat ustiga foyda savdo tuzilmasidir. Xaridor jamini (xarajat + ustama) kechiktirilgan to'lovlar bilan to'laydi. Foiz olinmaydi." },
+          { "question": "Musawama nima?", "answer": "Musawama — ikki tomon sotuvchi o'z xarajatini oshkor qilmasdan yakuniy narxga keladigan kelishilgan narxdagi savdodir. U bir xil darajada Shariatga mos — Musawama ostida xarajatni oshkor qilish ixtiyoriy." },
+          { "question": "Ustama foizga teng emasmi?", "answer": "Yo'q. Islom moliyasida asosiy farq shundaki, foyda vaqt davomida pul qarz berishdan emas, haqiqiy tijorat bitimidan (moddiy aktivni sotib olish va sotish) keladi. Ustama oldindan kelishiladi va belgilanadi — xaridor kechiksa ham o'smaydi (foizdan farqli). Kechikish to'lovlari daromad sifatida saqlanmaydi, xayriyaga beriladi." }
+        ]
+      },
+      {
+        "category": "AqadChain'dan foydalanish",
+        "items": [
+          { "question": "AqadChain'dan foydalanish uchun advokat kerakmi?", "answer": "Yo'q. AqadChain to'liq, yuridik jihatdan tuzilgan shartnomani avtomatik yaratadi. Platformamizda shartnoma tuzish yoki imzolash uchun advokat yollashingiz shart emas. Biroq, katta bitimlar uchun yuridik maslahat doimo oqilona tanlovdir." },
+          { "question": "Elektron imzolash qanday ishlaydi?", "answer": "Shartnoma tuzganingizdan so'ng, ikki tomon ham sohada yetakchi elektron imzo provayderi bo'lgan DocuSign'dan elektron pochta oladi. Ular havolani bosadilar, shartnomani ko'rib chiqadilar va elektron tarzda imzolaydilar. Imzolar ESIGN qonuniga ko'ra yuridik kuchga ega." },
+          { "question": "Ikki tomon ham telefonidan imzolashi mumkinmi?", "answer": "Ha. DocuSign istalgan qurilmada ishlaydi — telefon, planshet yoki kompyuter. Ilova yuklab olish talab qilinmaydi." },
+          { "question": "Ikki tomon imzolaganidan keyin nima bo'ladi?", "answer": "Imzolangan PDF xavfsiz saqlanadi va ikki tomonga elektron pochta orqali yuboriladi. U shuningdek istalgan vaqtda yuklab olish uchun AqadChain boshqaruv panelingizdan kirish mumkin." }
+        ]
+      },
+      {
+        "category": "Shartnomalar va muvofiqlik",
+        "items": [
+          { "question": "Bu Kaliforniyada yuridik jihatdan ijro etiladimi?", "answer": "Ha. AqadChain shartnomalari Kaliforniya qonuni bilan tartibga solinadigan standart kechiktirilgan to'lov savdo shartnomalari sifatida tuzilgan. Ular ta'minlangan avtomobil savdolari uchun barcha yuridik talab qilinadigan bandlarni o'z ichiga oladi va muvofiq elektron imzolar orqali bajariladi." },
+          { "question": "AqadChain Shariat sertifikatini beradimi?", "answer": "Yo'q. AqadChain AAOIFI Islom moliyasi standartlaridan ilhomlangan shartnoma shablonlarini taqdim etuvchi dasturiy platformadir. Biz fatvo yoki Shariat sertifikatlarini bermaymiz. Foydalanuvchilar diniy yo'riqnoma uchun malakali Shariat maslahatchisi bilan maslahatlashishlari kerak." },
+          { "question": "Maksimal ustama foizi qancha?", "answer": "AqadChain talonchi shartlarning oldini olish uchun ustamani 25% bilan chegaralaydi. Bu platforma darajasidagi himoya — tomonlar har qanday past ustamaga kelishishi mumkin." },
+          { "question": "Foiz olinmasdan kechikish to'lovi qanday ishlaydi?", "answer": "Agar to'lov 30 kundan ortiq kechiksa, belgilangan kunlik to'lov qo'llaniladi — ammo sotuvchi bu to'lovni saqlamaydi. U ikki tomon imzolash vaqtida kelishgan xayriyaga beriladi. Bu sotuvchi kechikishdan foyda ko'rmasdan (bu Riboga o'xshash bo'lardi) javobgarlikni yaratadi." }
+        ]
+      }
+    ]
+  }
+}
