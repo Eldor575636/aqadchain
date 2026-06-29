@@ -117,14 +117,14 @@ function MiniDealCard({ id, vehicle, type, amount, monthly, term, color }) {
 }
 
 const exampleDeals = [
-  { id: 'AQD-000142', vehicle: '2022 Toyota Camry XLE', type: 'Murabaha', amount: '$18,500', monthly: '$412', term: '48 mo', color: '#4ade80' },
-  { id: 'AQD-000158', vehicle: '2023 Honda CR-V EX-L', type: 'Musawama', amount: '$27,900', monthly: '$598', term: '52 mo', color: '#4ade80' },
-  { id: 'AQD-000171', vehicle: '2021 Ford F-150 XLT', type: 'Ijarah Lease', amount: '$34,200', monthly: '$715', term: '36 mo', color: '#60a5fa' },
-  { id: 'AQD-000186', vehicle: '2023 Tesla Model Y', type: 'Murabaha', amount: '$42,800', monthly: '$890', term: '54 mo', color: '#4ade80' },
-  { id: 'AQD-000203', vehicle: '2020 BMW X5 xDrive40i', type: 'Musawama', amount: '$38,650', monthly: '$805', term: '48 mo', color: '#4ade80' },
-  { id: 'AQD-000219', vehicle: '2022 Chevrolet Tahoe', type: 'Ijarah Lease', amount: '$45,100', monthly: '$940', term: '42 mo', color: '#60a5fa' },
-  { id: 'AQD-000234', vehicle: '2023 Lexus RX 350', type: 'Murabaha', amount: '$31,400', monthly: '$652', term: '48 mo', color: '#4ade80' },
-  { id: 'AQD-000251', vehicle: '2021 Jeep Wrangler Rubicon', type: 'Musawama', amount: '$29,750', monthly: '$615', term: '46 mo', color: '#4ade80' },
+  { id: 'AQD-CG-0019', vehicle: '2024 Honda CR-V Sport Hybrid AWD', type: 'Ijarah Lease', amount: '$33,000', monthly: '$1,375', term: '12 mo', color: '#60a5fa' },
+  { id: 'AQD-CG-0014', vehicle: '2022 Ford Escape Hybrid', type: 'Musawama', amount: '$17,500', monthly: '$1,604', term: '12 mo', color: '#4ade80' },
+  { id: 'AQD-CG-0007', vehicle: '2014 Lexus ES300h Hybrid', type: 'Ijarah Lease', amount: '$12,500', monthly: '$521', term: '12 mo', color: '#60a5fa' },
+  { id: 'AQD-CG-0008', vehicle: '2021 Toyota Corolla Hybrid LE', type: 'Musawama', amount: '$17,000', monthly: '$1,558', term: '12 mo', color: '#4ade80' },
+  { id: 'AQD-CG-0013', vehicle: '2019 Toyota Camry Hybrid SE', type: 'Musawama', amount: '$13,200', monthly: '$1,210', term: '12 mo', color: '#4ade80' },
+  { id: 'AQD-CG-0011', vehicle: '2018 Ford Fusion Hybrid Titanium', type: 'Ijarah Lease', amount: '$11,800', monthly: '$492', term: '12 mo', color: '#60a5fa' },
+  { id: 'AQD-CG-0005', vehicle: '2016 Toyota Camry Hybrid XLE', type: 'Ijarah Lease', amount: '$11,500', monthly: '$479', term: '12 mo', color: '#60a5fa' },
+  { id: 'AQD-CG-0006', vehicle: '2019 Ford Fusion Hybrid SE', type: 'Musawama', amount: '$9,800', monthly: '$898', term: '12 mo', color: '#4ade80' },
 ];
 
 function DealTicker() {
