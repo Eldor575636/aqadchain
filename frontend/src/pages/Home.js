@@ -1051,6 +1051,7 @@ export default function Home() {
       </section>
 
       {/* ── FEATURED IN ──────────────────────────────────────────── */}
+      {/* Temporarily hidden — re-enable by removing this comment wrapper
       <section className="py-14 border-t border-white/5 overflow-hidden">
         <p className="text-center text-white/20 text-xs font-semibold uppercase tracking-widest mb-8 px-4">{t('home.asSeenIn')}</p>
         <div className="overflow-hidden">
@@ -1068,7 +1069,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── CHARITY PARTNERS ─────────────────────────────────────── */}
+      {/ * ── CHARITY PARTNERS ─────────────────────────────────────── * /}
       <section className="py-14 border-t border-white/5 overflow-hidden">
         <p className="text-center text-white/20 text-xs font-semibold uppercase tracking-widest mb-8 px-4">{t('home.charityHeader')}</p>
         <div className="overflow-hidden">
@@ -1085,6 +1086,7 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
+      */}
 
       <Footer dark />
     </div>
