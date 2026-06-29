@@ -48,7 +48,7 @@ const listings = [
     asking_price: 47200, contract_type_offered: 'IJARAH',
     description: 'Spacious family SUV, 3rd row seating, tow capacity 8,400 lbs.',
     city: 'Fremont', state: 'CA', zip: '94536',
-    photo_url: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=900&q=80',
+    photo_url: 'https://cdn.zyrosite.com/cdn-ecommerce/store_01JQR00E3D9BZGHB4AH156DP6W/assets/ddad1004-e855-4956-9910-6a3d3679a051.jpeg',
   },
   {
     vehicle_year: 2023, vehicle_make: 'Lexus', vehicle_model: 'RX 350', vehicle_trim: 'Premium',
