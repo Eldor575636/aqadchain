@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform, useInView, AnimatePresence } from 'framer-motion';
@@ -61,87 +61,6 @@ function Orbs() {
         className="absolute bottom-[0%] left-[30%] w-[400px] h-[400px] rounded-full"
         style={{ background: 'radial-gradient(circle, rgba(13,110,99,0.2) 0%, transparent 70%)' }}
       />
-    </div>
-  );
-}
-
-/* ─── Animated network graph (Scale AI–style hero background) ────── */
-const NETWORK_NODES = [
-  { x: 8, y: 18 }, { x: 22, y: 10 }, { x: 38, y: 22 }, { x: 52, y: 8 },
-  { x: 68, y: 16 }, { x: 84, y: 10 }, { x: 94, y: 26 }, { x: 14, y: 38 },
-  { x: 30, y: 42 }, { x: 46, y: 36 }, { x: 60, y: 46 }, { x: 76, y: 38 },
-  { x: 90, y: 50 }, { x: 6, y: 60 }, { x: 20, y: 68 }, { x: 36, y: 62 },
-  { x: 50, y: 72 }, { x: 64, y: 64 }, { x: 80, y: 70 }, { x: 92, y: 82 },
-  { x: 12, y: 86 }, { x: 28, y: 90 }, { x: 44, y: 84 }, { x: 58, y: 92 },
-];
-
-function buildEdges(nodes, maxDist = 26, maxPerNode = 3) {
-  const edges = [];
-  nodes.forEach((a, i) => {
-    const candidates = nodes
-      .map((b, j) => ({ j, dist: Math.hypot(a.x - b.x, a.y - b.y) }))
-      .filter(({ j, dist }) => j !== i && dist < maxDist)
-      .sort((a2, b2) => a2.dist - b2.dist)
-      .slice(0, maxPerNode);
-    candidates.forEach(({ j }) => {
-      const key = i < j ? `${i}-${j}` : `${j}-${i}`;
-      if (!edges.some((e) => e.key === key)) edges.push({ key, a: i, b: j });
-    });
-  });
-  return edges;
-}
-
-function NetworkGraph() {
-  const edges = useMemo(() => buildEdges(NETWORK_NODES), []);
-  return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      <motion.svg
-        viewBox="0 0 100 100"
-        preserveAspectRatio="none"
-        className="absolute inset-0 w-full h-full"
-        animate={{ x: [0, 8, 0], y: [0, -6, 0] }}
-        transition={{ duration: 26, repeat: Infinity, ease: 'easeInOut' }}
-      >
-        <defs>
-          <radialGradient id="nodeGlow" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#4ade80" stopOpacity="0.9" />
-            <stop offset="100%" stopColor="#4ade80" stopOpacity="0" />
-          </radialGradient>
-        </defs>
-
-        {/* Edges */}
-        {edges.map(({ key, a, b }) => {
-          const n1 = NETWORK_NODES[a];
-          const n2 = NETWORK_NODES[b];
-          return (
-            <line key={key} x1={n1.x} y1={n1.y} x2={n2.x} y2={n2.y}
-              stroke="rgba(78,255,180,0.12)" strokeWidth="0.15" />
-          );
-        })}
-
-        {/* Traveling data pulses */}
-        {edges.map(({ key, a, b }, i) => {
-          const n1 = NETWORK_NODES[a];
-          const n2 = NETWORK_NODES[b];
-          return (
-            <motion.circle key={`pulse-${key}`} r="0.45" fill="#C9A84C"
-              animate={{ cx: [n1.x, n2.x], cy: [n1.y, n2.y], opacity: [0, 1, 1, 0] }}
-              transition={{ duration: 3.5, repeat: Infinity, delay: (i % 12) * 0.6, ease: 'easeInOut' }}
-            />
-          );
-        })}
-
-        {/* Nodes */}
-        {NETWORK_NODES.map((n, i) => (
-          <g key={i}>
-            <circle cx={n.x} cy={n.y} r="3" fill="url(#nodeGlow)" />
-            <motion.circle cx={n.x} cy={n.y} r="0.6" fill="#4ade80"
-              animate={{ opacity: [0.4, 1, 0.4], scale: [1, 1.6, 1] }}
-              transition={{ duration: 2.5 + (i % 5) * 0.4, repeat: Infinity, delay: (i % 7) * 0.3, ease: 'easeInOut' }}
-            />
-          </g>
-        ))}
-      </motion.svg>
     </div>
   );
 }
@@ -805,7 +724,6 @@ export default function Home() {
       {/* ── HERO ─────────────────────────────────────────────────── */}
       <section className="relative min-h-screen flex flex-col items-center justify-center px-4 pt-20 overflow-hidden">
         <GridBg />
-        <NetworkGraph />
         <Orbs />
 
         <div className="relative z-10 text-center max-w-5xl mx-auto w-full">
